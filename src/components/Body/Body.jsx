@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
 export const Body = () => {
-	return;
-	<>
-		<main className='body-content'>This is body</main>
-	</>;
-};
+  return (
+    <main className='body'>Body</main>
+  )
+}
+
