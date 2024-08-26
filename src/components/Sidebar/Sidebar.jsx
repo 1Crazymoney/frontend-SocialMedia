@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 export const Sidebar = () => {
-  return (
-    <div>Sidebar</div>
-  )
-}
+	return (
+		<>
+			<aside className='sidebar'>
+				<ul className='sidebar-items'></ul>
+			</aside>
+		</>
+	);
+};
