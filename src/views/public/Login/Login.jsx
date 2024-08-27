@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { LoginUser } from '../../../services/apiCalls';
-import { isTokenValid } from '../../../utils/functions';
 import { CForm } from '../../../components/CForm/CForm';
 import { validateCredentials } from '../../../utils/functions';
+import { useAuth } from '../../../contexts/AuthContext/AuthContext';
 
 export const Login = () => {
 	const navigate = useNavigate();
 	const [errors, setErrors] = useState({});
+
+	const { setSessionData } = useAuth();
 
 	const loginFields = [
 		{ type: 'email', name: 'email', placeholder: 'Email' },
@@ -21,13 +23,13 @@ export const Login = () => {
 			if (isValid) {
 				const response = await LoginUser(credentials);
 				if (response.success) {
-					const decodedToken = jwtDecode(response.token);
+					const decodedToken = jwtDecode(response.data);
 					const passport = {
-						token: response.token,
+						token: response.data,
 						tokenData: decodedToken,
 					};
-					localStorage.setItem('passport', JSON.stringify(passport));
-					isTokenValid(decodedToken.exp);
+					setSessionData(passport);
+					navigate('/profile');
 				} else {
 					alert(response.message);
 				}
