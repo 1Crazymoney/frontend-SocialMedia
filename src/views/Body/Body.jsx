@@ -26,7 +26,7 @@ export const Body = () => {
 					element={<Home />}
 				/>
 				<Route
-					path='/auth'
+					path='/login'
 					element={<Login />}
 				/>
 				<Route
