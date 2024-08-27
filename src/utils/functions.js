@@ -18,3 +18,17 @@ export const isTokenValid = (expiresAt) => {
         }
     }, 60000)
 }
+
+export const validateCredentials = (credentials) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(credentials.email)) {
+        return false;
+    }
+
+    if (credentials.password.length < 8 || credentials.password.length > 12) {
+        return false;
+    }
+
+    return true;
+};
