@@ -1,5 +1,5 @@
 import { Navbar } from './components/Nabvar/Navbar';
-import { Body } from './components/Body/Body';
+import { Body } from './views/Body/Body'
 import { Sidebar } from './components/Sidebar/Sidebar';
 import './App.css';
 
