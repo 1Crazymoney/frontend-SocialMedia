@@ -29,7 +29,7 @@ export const Login = () => {
 						tokenData: decodedToken,
 					};
 					setSessionData(passport);
-					navigate('/profile');
+					navigate('/home');
 				} else {
 					alert(response.message);
 				}
@@ -46,6 +46,9 @@ export const Login = () => {
 
 	return (
 		<>
+			<div>
+				<h2>Connect with your other side</h2>
+			</div>
 			<h1>Login</h1>
 			<CForm
 				fields={loginFields}

@@ -35,7 +35,7 @@ export const Navbar = () => {
 					/>
 					<div
 						className='logout'
-						onClick={handleLogout}>
+						onClick={logout}>
 						Logout
 					</div>
 				</>

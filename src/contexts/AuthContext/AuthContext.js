@@ -27,6 +27,7 @@ export const useAuthorization = () => {
 		setIsLoggedIn(false);
 		setIsAdmin(false);
 		localStorage.removeItem('passport');
+		navigate('/login');
 	};
 
 	return { token, isLoggedIn, isAdmin, setSessionData, logout };

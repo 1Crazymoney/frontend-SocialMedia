@@ -22,8 +22,12 @@ export const Body = () => {
 					element={<NotFound />}
 				/>
 				<Route
-					path='/'
+					path='Home'
 					element={<Home />}
+				/>
+				<Route
+					path='/'
+					element={<Login />}
 				/>
 				<Route
 					path='/login'
