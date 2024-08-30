@@ -74,21 +74,30 @@ export const getProfile = async (token) => {
 };
 
 export const updateProfile = async (data, token) => {
-	console.log(data);
-	const response = await fetch(`${URL}/users/profile`, {
-		method: 'PUT',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token}`,
-		},
-		body: JSON.stringify(data),
-	});
-
-	if (!response.ok) {
-		throw new Error(`Error: ${response.status} ${response.statusText}`);
+	if (!data || !token) {
+		throw new Error('Data and token are required');
 	}
 
-	return await response.json();
+	try {
+		const response = await fetch(`${URL}/users/profile`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(data),
+		});
+
+		if (!response.ok) {
+			const errorDetails = await response.text();
+			throw new Error(
+				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+			);
+		}
+	} catch (error) {
+		console.error('Error updating profile:', error.message);
+		throw error;
+	}
 };
 
 export const getFollowers = async (token) => {
@@ -216,27 +225,35 @@ export const deletePost = async (postId, token) => {
 	}
 };
 
-export const updatePost = async (postData, token) => {
-	try {
-		const response = await fetch(`${URL}/posts`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-			body: JSON.stringify(postData),
-		});
-
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status} ${response.statusText}`);
-		}
-
-		return await response.json();
-	} catch (error) {
-		console.error('Error updating post:', error);
-		return { success: false, message: error.message };
+export const updatePost = async (postId, data, token) => {
+	if (!postId || !data || !token) {
+	  throw new Error('Post ID, data, and token are required');
 	}
-};
+  
+	try {
+	  const response = await fetch(`${URL}/posts`, {
+		method: 'PUT',
+		headers: {
+		  'Content-Type': 'application/json',
+		  Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify({
+		  postId,
+		  ...data,
+		}),
+	  });
+  
+	  if (!response.ok) {
+		const errorDetails = await response.text(); // Obtener detalles del error
+		throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
+	  }
+  
+	  return await response.json(); // Devolver la respuesta en formato JSON
+	} catch (error) {
+	  console.error('Error updating post:', error.message);
+	  throw error; // Lanzar el error para que pueda ser manejado en el lugar de llamada
+	}
+  };
 
 export const getOwnPosts = async (token) => {
 	try {
