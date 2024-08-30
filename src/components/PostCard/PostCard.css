@@ -1,0 +1,55 @@
+.post-card {
+    border: 0.0625em solid #ddd;
+    border-radius: 0.5em;
+    margin: 1em;
+    padding: 1em;
+  }
+  
+  .post-header {
+    margin-bottom: 0.75em;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-bottom: 0.25em;
+  }
+  
+  .post-date {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .post-description {
+    margin-bottom: 0.75em;
+  }
+  
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.75em;
+  }
+  
+  .post-footer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .like-button {
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    border: none;
+    border-radius: 0.25em;
+    cursor: pointer;
+    background-color: #1da1f2;
+    color: white;
+  }
+  
+  .like-button.liked {
+    background-color: #17bf63;
+  }
+  
+  .likes-counter {
+    font-size: 0.9em;
+    color: #666;
+    margin-left: 0.5em;
+  }

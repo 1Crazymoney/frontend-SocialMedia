@@ -194,6 +194,7 @@ export const likeOrNot = async (postId, token) => {
 		return { success: false, message: error.message };
 	}
 };
+
 export const deletePost = async (postId, token) => {
 	try {
 		const response = await fetch(`${URL}/posts/${postId}`, {

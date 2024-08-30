@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Register } from '../public/Register/Register';
 import { Login } from '../public/Login/Login';
-import { Home } from '../user/Home/Home';
+import Home from '../user/Home/Home';
 import { Profile } from '../user/Profile/Profile';
 import { Admin } from '../admin/Admin';
 import { NotFound } from '../../components/NotFound/NotFound';

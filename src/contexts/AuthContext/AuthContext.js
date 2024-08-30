@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 
 export const useAuthorization = () => {
 	const [token, setToken] = useState(null);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const passport = JSON.parse(localStorage.getItem('passport'));
