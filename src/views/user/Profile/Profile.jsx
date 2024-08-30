@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getOwnPosts, deletePost } from '../../../services/apiCalls';
+import { getOwnPosts, deletePost, updatePost } from '../../../services/apiCalls';
 import { useAuth } from '../../../contexts/AuthContext/AuthContext';
 import PostItem from '../../../components/PostItem/PostItem';
 
@@ -9,9 +9,9 @@ const Profile = () => {
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			if (!token) return; // Asegúrate de que el token esté disponible antes de hacer la solicitud
+			if (!token) return;
 			try {
-				console.log('Token being sent:', token); // Verifica que el token esté correcto
+				console.log('Token being sent:', token);
 				const result = await getOwnPosts(token);
 				console.log('API Response:', result);
 				if (result.success) {
@@ -25,7 +25,7 @@ const Profile = () => {
 		};
 
 		fetchPosts();
-	}, [token]); // Vuelve a intentar la solicitud cuando el token esté disponible
+	}, [token]);
 
 	const handleDelete = async (postId) => {
 		try {
@@ -40,6 +40,21 @@ const Profile = () => {
 		}
 	};
 
+	const handleEdit = async (postId, updatedData) => {
+		try {
+			const result = await updatePost(postId, updatedData, token);
+			if (result.success) {
+				setPosts(posts.map(post => 
+					post._id === postId ? { ...post, ...updatedData } : post
+				));
+			} else {
+				console.error(result.message);
+			}
+		} catch (error) {
+			console.error('Error updating post:', error);
+		}
+	};
+
 	return (
 		<div className='profile-posts'>
 			{Array.isArray(posts) && posts.length === 0 ? (
@@ -50,6 +65,7 @@ const Profile = () => {
 						key={post._id}
 						post={post}
 						onDelete={handleDelete}
+						onEdit={handleEdit}
 					/>
 				))
 			)}

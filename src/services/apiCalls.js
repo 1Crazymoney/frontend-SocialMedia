@@ -227,33 +227,35 @@ export const deletePost = async (postId, token) => {
 
 export const updatePost = async (postId, data, token) => {
 	if (!postId || !data || !token) {
-	  throw new Error('Post ID, data, and token are required');
+		throw new Error('Post ID, data, and token are required');
 	}
-  
+
 	try {
-	  const response = await fetch(`${URL}/posts`, {
-		method: 'PUT',
-		headers: {
-		  'Content-Type': 'application/json',
-		  Authorization: `Bearer ${token}`,
-		},
-		body: JSON.stringify({
-		  postId,
-		  ...data,
-		}),
-	  });
-  
-	  if (!response.ok) {
-		const errorDetails = await response.text(); // Obtener detalles del error
-		throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
-	  }
-  
-	  return await response.json(); // Devolver la respuesta en formato JSON
+		const response = await fetch(`${URL}/posts`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				postId,
+				...data,
+			}),
+		});
+
+		if (!response.ok) {
+			const errorDetails = await response.text();
+			throw new Error(
+				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+			);
+		}
+
+		return await response.json();
 	} catch (error) {
-	  console.error('Error updating post:', error.message);
-	  throw error; // Lanzar el error para que pueda ser manejado en el lugar de llamada
+		console.error('Error updating post:', error.message);
+		throw error;
 	}
-  };
+};
 
 export const getOwnPosts = async (token) => {
 	try {

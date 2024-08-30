@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { updatePost } from '../../services/apiCalls';
-import { useAuth } from '../../contexts/AuthContext/AuthContext';
 import './PostItem.css';
 
 const PostItem = ({ post, onDelete, onEdit }) => {
