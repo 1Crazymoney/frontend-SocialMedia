@@ -31,7 +31,15 @@ const PostCard = ({ post }) => {
 	return (
 		<div className='post-card'>
 			<div className='post-header'>
-				<h4 className='user-name'>{post.user.user_name}</h4>
+				<img
+					className='profile-picture-post'
+					src={post.user.profilePicture}
+					alt={`${post.user.first_name} ${post.user.last_name}`}
+				/>
+				<div className='user-info'>
+					<h4 className='user-name'>{post.user.first_name} {post.user.last_name}</h4>
+					<h6 className='user-username'>@{post.user.user_name}</h6>
+				</div>
 				<p className='post-date'>
 					{new Date(post.createdAt).toLocaleDateString()}
 				</p>
