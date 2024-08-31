@@ -16,12 +16,8 @@ export const RegisterUser = async (credentials) => {
 			throw new Error(`Error: ${request.status} ${request.statusText}`);
 		}
 
-		const result = await request.json();
-		console.log(result);
-
-		return result;
+		return await request.json();
 	} catch (error) {
-		console.error('Registration error:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -40,12 +36,8 @@ export const LoginUser = async (credentials) => {
 			throw new Error(`Error: ${request.status} ${request.statusText}`);
 		}
 
-		const result = await request.json();
-		console.log(result);
-
-		return result;
+		return await request.json();
 	} catch (error) {
-		console.error('Login error:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -68,7 +60,6 @@ export const getProfile = async (token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Get profile error:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -94,8 +85,11 @@ export const updateProfile = async (data, token) => {
 				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
 			);
 		}
+
+		const jsonResponse = await response.json();
+		return jsonResponse;
 	} catch (error) {
-		console.error('Error updating profile:', error.message);
+		console.error('Error in updateProfile API call:', error.message);
 		throw error;
 	}
 };
@@ -114,7 +108,6 @@ export const getFollowers = async (token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error fetching followers:', error);
 		return { success: false, message: 'Error fetching followers' };
 	}
 };
@@ -135,7 +128,6 @@ export const unFollow = async (id, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error unfollowing user:', error);
 		return { success: false, message: 'Error unfollowing user' };
 	}
 };
@@ -156,12 +148,12 @@ export const follow = async (id, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error following user:', error);
 		return { success: false, message: 'Error following user' };
 	}
 };
 
 // POSTS
+
 export const createPost = async (formData, token) => {
 	try {
 		const response = await fetch(`${URL}/posts`, {
@@ -178,7 +170,6 @@ export const createPost = async (formData, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error creating post:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -199,7 +190,6 @@ export const likeOrNot = async (postId, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error liking/unliking post:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -220,7 +210,6 @@ export const deletePost = async (postId, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error deleting post:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -252,7 +241,6 @@ export const updatePost = async (postId, data, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error updating post:', error.message);
 		throw error;
 	}
 };
@@ -273,7 +261,6 @@ export const getOwnPosts = async (token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error fetching own posts:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -315,7 +302,6 @@ export const getPostById = async (postId, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error fetching post by ID:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -336,7 +322,6 @@ export const getPostsByUserId = async (userId, token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error fetching posts by user ID:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -359,7 +344,6 @@ export const getAllUsers = async (token) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error fetching all users:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -380,7 +364,6 @@ export const deleteUserById = async (token, id) => {
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error deleting user:', error);
 		return { success: false, message: error.message };
 	}
 };

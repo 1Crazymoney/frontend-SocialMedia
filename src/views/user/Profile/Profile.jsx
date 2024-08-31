@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getOwnPosts, deletePost, updatePost } from '../../../services/apiCalls';
+import {
+	getOwnPosts,
+	deletePost,
+	updatePost,
+} from '../../../services/apiCalls';
 import { useAuth } from '../../../contexts/AuthContext/AuthContext';
 import PostItem from '../../../components/PostItem/PostItem';
+import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
 
 const Profile = () => {
 	const [posts, setPosts] = useState([]);
@@ -44,9 +49,11 @@ const Profile = () => {
 		try {
 			const result = await updatePost(postId, updatedData, token);
 			if (result.success) {
-				setPosts(posts.map(post => 
-					post._id === postId ? { ...post, ...updatedData } : post
-				));
+				setPosts(
+					posts.map((post) =>
+						post._id === postId ? { ...post, ...updatedData } : post,
+					),
+				);
 			} else {
 				console.error(result.message);
 			}
@@ -56,20 +63,23 @@ const Profile = () => {
 	};
 
 	return (
-		<div className='profile-posts'>
-			{Array.isArray(posts) && posts.length === 0 ? (
-				<p>No posts available.</p>
-			) : (
-				posts.map((post) => (
-					<PostItem
-						key={post._id}
-						post={post}
-						onDelete={handleDelete}
-						onEdit={handleEdit}
-					/>
-				))
-			)}
-		</div>
+		<>
+			<ProfileHeader />
+			<div className='profile-posts'>
+				{Array.isArray(posts) && posts.length === 0 ? (
+					<p>No posts available.</p>
+				) : (
+					posts.map((post) => (
+						<PostItem
+							key={post._id}
+							post={post}
+							onDelete={handleDelete}
+							onEdit={handleEdit}
+						/>
+					))
+				)}
+			</div>
+		</>
 	);
 };
 
