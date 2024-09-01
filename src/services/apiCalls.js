@@ -391,26 +391,29 @@ export const deleteUserById = async (token, id) => {
 	}
 };
 
-export const deletePostById = async (postId, token) => {
+//Delete posts Admin
+export const deletePostById = async (token, postId) => {
 	try {
-		const response = await fetch(`${URL}/posts/admin/${postId}`, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-		});
-
-		if (!response.ok) {
-			const errorDetails = await response.text();
-			throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
-		}
-
-		return await response.json();
+	  const response = await fetch(`${URL}/posts/admin/${postId}`, {
+		method: 'DELETE',
+		headers: {
+		  'Content-Type': 'application/json',
+		  'Authorization': `Bearer ${token}`,
+		},
+	  });
+  
+	  if (!response.ok) {
+		const errorDetails = await response.text();
+		throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
+	  }
+  
+	  return await response.json();
 	} catch (error) {
-		return { success: false, message: error.message };
+	  console.error('Error deleting post:', error);
+	  return { success: false, message: error.message };
 	}
-};
+  };
+  
 
 export const updateUser = async (userId, userData, token) => {
 	try {

@@ -1,22 +1,138 @@
+// import React, { useEffect, useState } from 'react';
+// import { getAllPosts, updatePost, deletePostById } from '../../services/apiCalls';
+// import { CInput } from '../../components/CInput/CInput';
+// import '../../views/admin/Admin.css'
+
+// export const CPostsList = () => {
+//     const [posts, setPosts] = useState([]);
+//     const [editingPost, setEditingPost] = useState(null);
+//     const passport = JSON.parse(localStorage.getItem('passport'));
+//     const token = passport.token;
+
+//     useEffect(() => {
+//         const fetchPosts = async () => {
+//             const response = await getAllPosts(token);
+//             if (response.success) {
+//                 setPosts(response.data);
+//             }
+//         };
+//         fetchPosts();
+//     }, [token]);
+
+//     const handleEdit = (post) => {
+//         setEditingPost({ ...post });
+//     };
+
+//     const handleSave = async () => {
+//         const response = await updatePost(token, editingPost);
+//         if (response.success) {
+//             setPosts(posts.map((post) => (post._id === editingPost._id ? editingPost : post)));
+//             setEditingPost(null);
+//         }
+//     };
+
+//     const handleDelete = async (postId) => {
+//         const response = await deletePostById(token, postId);
+//         if (response.success) {
+//             setPosts(posts.filter((post) => post._id !== postId));
+//         }
+//     };
+
+//     const handleInputChange = (e) => {
+//         setEditingPost({ ...editingPost, [e.target.name]: e.target.value });
+//     };
+
+//     return (
+//         <div className='posts-container'>
+//             <div className='table-row'>
+//                 <h2 className='title'>ID</h2>
+//                 <h2 className='title'>User</h2>
+//                 <h2 className='title'>Description</h2>
+//                 <h2 className='title'>Likes</h2>
+//                 <h2 className='title'>Actions</h2>
+//             </div>
+//             {posts.map((post) => (
+//                 <div className='table-row' key={post._id}>
+//                     <div className='content'>{post._id}</div>
+//                     {editingPost && editingPost._id === post._id ? (
+//                         <>
+//                             <div className='content'>{post.user.user_name}</div>
+//                             <CInput
+//                                 type='text'
+//                                 name='description'
+//                                 value={editingPost.description}
+//                                 onChange={handleInputChange}
+//                             />
+//                             <div className='content'>{post.likes.length}</div>
+//                             <div>
+//                                 <CInput
+//                                     type='button'
+//                                     value='Save'
+//                                     clickFunction={handleSave}
+//                                     className='button button-save'
+//                                 />
+//                                 <CInput
+//                                     type='button'
+//                                     value='Cancel'
+//                                     clickFunction={() => setEditingPost(null)}
+//                                     className='button button-cancel'
+//                                 />
+//                             </div>
+//                         </>
+//                     ) : (
+//                         <>
+//                             <div className='content'>{post.user.user_name}</div>
+//                             <div className='content'>{post.description}</div>
+//                             <div className='content'>{post.likes.length}</div>
+//                             <div>
+//                                 <CInput
+//                                     type='button'
+//                                     value='Edit'
+//                                     clickFunction={() => handleEdit(post)}
+//                                     className='button'
+//                                 />
+//                                 <CInput
+//                                     type='button'
+//                                     value='Delete'
+//                                     clickFunction={() => handleDelete(post._id)}
+//                                     className='button'
+//                                 />
+//                             </div>
+//                         </>
+//                     )}
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// };
+
 import React, { useEffect, useState } from 'react';
 import { getAllPosts, updatePost, deletePostById } from '../../services/apiCalls';
 import { CInput } from '../../components/CInput/CInput';
-import '../../views/admin/Admin.css'
+import '../../views/admin/Admin.css';
 
 export const CPostsList = () => {
     const [posts, setPosts] = useState([]);
     const [editingPost, setEditingPost] = useState(null);
     const passport = JSON.parse(localStorage.getItem('passport'));
-    const token = passport.token;
+    const token = passport?.token;
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await getAllPosts(token);
-            if (response.success) {
-                setPosts(response.data);
+            try {
+                const response = await getAllPosts(token);
+                if (response.success) {
+                    setPosts(response.data);
+                } else {
+                    console.error('Failed to fetch posts:', response.message);
+                }
+            } catch (error) {
+                console.error('Error fetching posts:', error);
             }
         };
-        fetchPosts();
+        if (token) {
+            fetchPosts();
+        }
     }, [token]);
 
     const handleEdit = (post) => {
@@ -24,17 +140,29 @@ export const CPostsList = () => {
     };
 
     const handleSave = async () => {
-        const response = await updatePost(token, editingPost);
-        if (response.success) {
-            setPosts(posts.map((post) => (post._id === editingPost._id ? editingPost : post)));
-            setEditingPost(null);
+        try {
+            const response = await updatePost(token, editingPost);
+            if (response.success) {
+                setPosts(posts.map((post) => (post._id === editingPost._id ? editingPost : post)));
+                setEditingPost(null);
+            } else {
+                console.error('Failed to update post:', response.message);
+            }
+        } catch (error) {
+            console.error('Error updating post:', error);
         }
     };
 
     const handleDelete = async (postId) => {
-        const response = await deletePostById(token, postId);
-        if (response.success) {
-            setPosts(posts.filter((post) => post._id !== postId));
+        try {
+            const response = await deletePostById(token, postId);
+            if (response.success) {
+                setPosts(posts.filter((post) => post._id !== postId));
+            } else {
+                console.error('Failed to delete post:', response.message);
+            }
+        } catch (error) {
+            console.error('Error deleting post:', error);
         }
     };
 
@@ -61,7 +189,8 @@ export const CPostsList = () => {
                                 type='text'
                                 name='description'
                                 value={editingPost.description}
-                                onChange={handleInputChange}
+                                emitFunction={handleInputChange}
+                                className='input-field'
                             />
                             <div className='content'>{post.likes.length}</div>
                             <div>
@@ -105,4 +234,3 @@ export const CPostsList = () => {
         </div>
     );
 };
-
