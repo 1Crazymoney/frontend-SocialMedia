@@ -245,25 +245,46 @@ export const updatePost = async (postId, data, token) => {
 	}
 };
 
+// export const getOwnPosts = async (token) => {
+// 	try {
+// 		const response = await fetch(`${URL}/posts/own`, {
+// 			method: 'GET',
+// 			headers: {
+// 				'Content-Type': 'application/json',
+// 				Authorization: `Bearer ${token}`,
+// 			},
+// 		});
+
+// 		if (!response.ok) {
+// 			throw new Error(`Error: ${response.status} ${response.statusText}`);
+// 		}
+
+// 		return await response.json();
+// 	} catch (error) {
+// 		return { success: false, message: error.message };
+// 	}
+// };
+
 export const getOwnPosts = async (token) => {
-	try {
-		const response = await fetch(`${URL}/posts/own`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-		});
+    try {
+        const response = await fetch(`${URL}/posts/own`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
 
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status} ${response.statusText}`);
-		}
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
 
-		return await response.json();
-	} catch (error) {
-		return { success: false, message: error.message };
-	}
+        return await response.json();
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
 };
+
 
 export const getAllPosts = async (token) => {
 	try {
