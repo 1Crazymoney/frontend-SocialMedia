@@ -395,7 +395,7 @@ export const deletePostById = async (token, postId) => {
   };
   
 
-export const updateUser = async (userId, userData, token) => {
+export const updateUserByAdmin = async (userId, userData, token) => {
 	try {
 		const response = await fetch(`${URL}/users/admin/${userId}`, {
 			method: 'PUT',
@@ -442,3 +442,26 @@ export const updatePostByAdmin = async (postId, data, token) => {
 	}
 };
 
+//Delete user by ADMIN
+export const deleteUserByAdmin = async (token, userId) => {
+    try {
+        const response = await fetch(`${URL}/users/admin/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            return { success: true, message: data.message };
+        } else {
+            return { success: false, message: data.message || response.statusText };
+        }
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: error.message };
+    }
+};
