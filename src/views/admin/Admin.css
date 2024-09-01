@@ -1,0 +1,69 @@
+/* General container for posts and users list */
+.posts-container, .users-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Row container for each item in the list */
+.table-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling for headers */
+.title {
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+}
+
+/* Content styling for each cell */
+.content {
+    background-color: #f5f5f5;
+    border: solid #ddd 1px;
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+}
+
+/* Buttons styling */
+.button {
+    cursor: pointer;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Adjusted button styling for different actions */
+.button-save {
+    background-color: #28a745;
+}
+
+.button-save:hover {
+    background-color: #218838;
+}
+
+.button-cancel {
+    background-color: #dc3545;
+}
+
+.button-cancel:hover {
+    background-color: #c82333;
+}

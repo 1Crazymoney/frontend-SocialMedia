@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Surfer } from '../Surfer/Surfer';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
@@ -6,6 +6,7 @@ import { useAuth } from '../../contexts/AuthContext/AuthContext';
 export const Navbar = () => {
 	const navigate = useNavigate();
 	const { isLoggedIn, logout, isAdmin } = useAuth();
+
 	return (
 		<nav className='navbar'>
 			{!isLoggedIn ? (
@@ -34,19 +35,27 @@ export const Navbar = () => {
 						content='Home'
 					/>
 					<div
-						className='logout'
+						className='nav-item'
 						onClick={logout}>
 						Logout
 					</div>
 				</>
 			)}
 			{isAdmin && (
-				<Surfer
-					className='nav-item'
-					path='/superadmin'
-					content='SuperAdmin'
-				/>
+				<>
+					<Surfer
+						className='nav-item'
+						path='/adminusers'
+						content='Users'
+					/>
+					<Surfer
+						className='nav-item'
+						path='/adminposts'
+						content='Posts'
+					/>
+				</>
 			)}
 		</nav>
 	);
 };
+

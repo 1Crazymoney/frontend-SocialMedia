@@ -266,24 +266,26 @@ export const getOwnPosts = async (token) => {
 };
 
 export const getAllPosts = async (token) => {
-	try {
-		const response = await fetch(`${URL}/posts`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-		});
+    try {
+        const response = await fetch(`${URL}/posts`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
 
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status} ${response.statusText}`);
-		}
+        if (!response.ok) {
+            const errorDetails = await response.text();
+            console.error(`Error fetching posts: ${errorDetails}`);
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
 
-		return await response.json();
-	} catch (error) {
-		console.error('Error fetching all posts:', error);
-		return { success: false, message: error.message };
-	}
+        return await response.json();
+    } catch (error) {
+        console.error('Error in getAllPosts:', error);
+        return { success: false, message: error.message };
+    }
 };
 
 export const getPostById = async (postId, token) => {
@@ -360,6 +362,49 @@ export const deleteUserById = async (token, id) => {
 
 		if (!response.ok) {
 			throw new Error(`Error: ${response.status} ${response.statusText}`);
+		}
+
+		return await response.json();
+	} catch (error) {
+		return { success: false, message: error.message };
+	}
+};
+
+export const deletePostById = async (postId, token) => {
+	try {
+		const response = await fetch(`${URL}/posts/admin/${postId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+		});
+
+		if (!response.ok) {
+			const errorDetails = await response.text();
+			throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
+		}
+
+		return await response.json();
+	} catch (error) {
+		return { success: false, message: error.message };
+	}
+};
+
+export const updateUser = async (userId, userData, token) => {
+	try {
+		const response = await fetch(`${URL}/users/admin/${userId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(userData),
+		});
+
+		if (!response.ok) {
+			const errorDetails = await response.text();
+			throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
 		}
 
 		return await response.json();
