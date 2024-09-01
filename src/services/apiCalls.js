@@ -156,23 +156,23 @@ export const follow = async (id, token) => {
 
 export const createPost = async (formData, token) => {
 	try {
-		const response = await fetch(`${URL}/posts`, {
-			method: 'POST',
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-			body: formData,
-		});
-
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status} ${response.statusText}`);
-		}
-
-		return await response.json();
+	  const response = await fetch(`${URL}/posts`, {
+		method: 'POST',
+		headers: {
+		  Authorization: `Bearer ${token}`,
+		},
+		body: formData,
+	  });
+  
+	  if (!response.ok) {
+		throw new Error(`Error: ${response.status} ${response.statusText}`);
+	  }
+  
+	  return await response.json();
 	} catch (error) {
-		return { success: false, message: error.message };
+	  return { success: false, message: error.message };
 	}
-};
+  };
 
 export const likeOrNot = async (postId, token) => {
 	try {
@@ -266,27 +266,27 @@ export const getOwnPosts = async (token) => {
 };
 
 export const getAllPosts = async (token) => {
-    try {
-        const response = await fetch(`${URL}/posts`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        if (!response.ok) {
-            const errorDetails = await response.text();
-            console.error(`Error fetching posts: ${errorDetails}`);
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('Error in getAllPosts:', error);
-        return { success: false, message: error.message };
-    }
-};
+	try {
+	  const response = await fetch(`${URL}/posts`, {
+		method: 'GET',
+		headers: {
+		  'Content-Type': 'application/json',
+		  Authorization: `Bearer ${token}`,
+		},
+	  });
+  
+	  if (!response.ok) {
+		const errorDetails = await response.text();
+		console.error(`Error fetching posts: ${errorDetails}`);
+		throw new Error(`Error: ${response.status} ${response.statusText}`);
+	  }
+  
+	  return await response.json();
+	} catch (error) {
+	  console.error('Error in getAllPosts:', error);
+	  return { success: false, message: error.message };
+	}
+  };
 
 export const getPostById = async (postId, token) => {
 	try {

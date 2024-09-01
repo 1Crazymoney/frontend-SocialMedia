@@ -3,9 +3,21 @@ import { likeOrNot } from '../../services/apiCalls';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
 
 const PostCard = ({ post }) => {
+	const { token } = useAuth();
 	const [likes, setLikes] = useState(post.likes.length);
 	const [isLiked, setIsLiked] = useState(post.isLiked || false);
-	const { token } = useAuth();
+
+	const {
+		user: {
+			profilePicture = 'path/to/default/profile-picture.jpg',
+			first_name = 'Unknown',
+			last_name = 'User',
+			user_name = 'user',
+		} = {},
+		description = '',
+		image = null,
+		createdAt = '',
+	} = post;
 
 	const toggleLike = async () => {
 		try {
@@ -33,23 +45,23 @@ const PostCard = ({ post }) => {
 			<div className='post-header'>
 				<img
 					className='profile-picture-post'
-					src={post.user.profilePicture}
-					alt={`${post.user.first_name} ${post.user.last_name}`}
+					src={profilePicture}
+					alt={`${first_name} ${last_name}`}
 				/>
 				<div className='user-info'>
-					<h4 className='user-name'>{post.user.first_name} {post.user.last_name}</h4>
-					<h6 className='user-username'>@{post.user.user_name}</h6>
+					<h4 className='user-name'>
+						{first_name} {last_name}
+					</h4>
+					<h6 className='user-username'>@{user_name}</h6>
 				</div>
-				<p className='post-date'>
-					{new Date(post.createdAt).toLocaleDateString()}
-				</p>
+				<p className='post-date'>{new Date(createdAt).toLocaleDateString()}</p>
 			</div>
 			<div className='post-body'>
-				<p className='post-description'>{post.description}</p>
-				{post.image && (
+				<p className='post-description'>{description}</p>
+				{image && (
 					<img
 						className='post-image'
-						src={post.image}
+						src={image}
 						alt='Post'
 					/>
 				)}
