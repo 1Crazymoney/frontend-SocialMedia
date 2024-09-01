@@ -156,23 +156,23 @@ export const follow = async (id, token) => {
 
 export const createPost = async (formData, token) => {
 	try {
-	  const response = await fetch(`${URL}/posts`, {
-		method: 'POST',
-		headers: {
-		  Authorization: `Bearer ${token}`,
-		},
-		body: formData,
-	  });
-  
-	  if (!response.ok) {
-		throw new Error(`Error: ${response.status} ${response.statusText}`);
-	  }
-  
-	  return await response.json();
+		const response = await fetch(`${URL}/posts`, {
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+			body: formData,
+		});
+
+		if (!response.ok) {
+			throw new Error(`Error: ${response.status} ${response.statusText}`);
+		}
+
+		return await response.json();
 	} catch (error) {
-	  return { success: false, message: error.message };
+		return { success: false, message: error.message };
 	}
-  };
+};
 
 export const likeOrNot = async (postId, token) => {
 	try {
@@ -246,48 +246,47 @@ export const updatePost = async (postId, data, token) => {
 };
 
 export const getOwnPosts = async (token) => {
-    try {
-        const response = await fetch(`${URL}/posts/own`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
+	try {
+		const response = await fetch(`${URL}/posts/own`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+		});
 
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
-        }
+		if (!response.ok) {
+			throw new Error(`Error: ${response.status} ${response.statusText}`);
+		}
 
-        return await response.json();
-    } catch (error) {
-        return { success: false, message: error.message };
-    }
+		return await response.json();
+	} catch (error) {
+		return { success: false, message: error.message };
+	}
 };
-
 
 export const getAllPosts = async (token) => {
 	try {
-	  const response = await fetch(`${URL}/posts`, {
-		method: 'GET',
-		headers: {
-		  'Content-Type': 'application/json',
-		  Authorization: `Bearer ${token}`,
-		},
-	  });
-  
-	  if (!response.ok) {
-		const errorDetails = await response.text();
-		console.error(`Error fetching posts: ${errorDetails}`);
-		throw new Error(`Error: ${response.status} ${response.statusText}`);
-	  }
-  
-	  return await response.json();
+		const response = await fetch(`${URL}/posts`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+		});
+
+		if (!response.ok) {
+			const errorDetails = await response.text();
+			console.error(`Error fetching posts: ${errorDetails}`);
+			throw new Error(`Error: ${response.status} ${response.statusText}`);
+		}
+
+		return await response.json();
 	} catch (error) {
-	  console.error('Error in getAllPosts:', error);
-	  return { success: false, message: error.message };
+		console.error('Error in getAllPosts:', error);
+		return { success: false, message: error.message };
 	}
-  };
+};
 
 export const getPostById = async (postId, token) => {
 	try {
@@ -329,7 +328,6 @@ export const getPostsByUserId = async (userId, token) => {
 	}
 };
 
-// SUPER ADMIN
 
 export const getAllUsers = async (token) => {
 	try {
@@ -374,45 +372,24 @@ export const deleteUserById = async (token, id) => {
 //Delete posts Admin
 export const deletePostById = async (token, postId) => {
 	try {
-	  const response = await fetch(`${URL}/posts/admin/${postId}`, {
-		method: 'DELETE',
-		headers: {
-		  'Content-Type': 'application/json',
-		  'Authorization': `Bearer ${token}`,
-		},
-	  });
-  
-	  if (!response.ok) {
-		const errorDetails = await response.text();
-		throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
-	  }
-  
-	  return await response.json();
-	} catch (error) {
-	  console.error('Error deleting post:', error);
-	  return { success: false, message: error.message };
-	}
-  };
-  
-
-export const updateUserByAdmin = async (userId, userData, token) => {
-	try {
-		const response = await fetch(`${URL}/users/admin/${userId}`, {
-			method: 'PUT',
+		const response = await fetch(`${URL}/posts/admin/${postId}`, {
+			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify(userData),
 		});
 
 		if (!response.ok) {
 			const errorDetails = await response.text();
-			throw new Error(`Error: ${response.status} ${response.statusText} - ${errorDetails}`);
+			throw new Error(
+				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+			);
 		}
 
 		return await response.json();
 	} catch (error) {
+		console.error('Error deleting post:', error);
 		return { success: false, message: error.message };
 	}
 };
@@ -426,16 +403,16 @@ export const updatePostByAdmin = async (postId, data, token) => {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify(data), 
+			body: JSON.stringify(data),
 		});
-	
+
 		if (!response.ok) {
 			const errorDetails = await response.text();
 			throw new Error(
 				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
 			);
 		}
-	
+
 		return await response.json();
 	} catch (error) {
 		throw new Error(`Error updating post: ${error.message}`);
@@ -444,24 +421,50 @@ export const updatePostByAdmin = async (postId, data, token) => {
 
 //Delete user by ADMIN
 export const deleteUserByAdmin = async (token, userId) => {
+	try {
+		const response = await fetch(`${URL}/users/admin/${userId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+		});
+
+		const data = await response.json();
+
+		if (response.ok) {
+			return { success: true, message: data.message };
+		} else {
+			return { success: false, message: data.message || response.statusText };
+		}
+	} catch (error) {
+		console.error(error);
+		return { success: false, message: error.message };
+	}
+};
+
+//Update user ADMIN
+export const updateUserByAdmin = async (userId, userData, token) => {
     try {
         const response = await fetch(`${URL}/users/admin/${userId}`, {
-            method: 'DELETE',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify(userData),
         });
 
-        const data = await response.json();
-
-        if (response.ok) {
-            return { success: true, message: data.message };
-        } else {
-            return { success: false, message: data.message || response.statusText };
+        if (!response.ok) {
+            const errorDetails = await response.text();
+            throw new Error(
+                `Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+            );
         }
+
+        return await response.json();
     } catch (error) {
-        console.error(error);
         return { success: false, message: error.message };
     }
 };
+

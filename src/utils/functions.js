@@ -32,3 +32,24 @@ export const validateCredentials = (credentials) => {
 
     return true;
 };
+
+// let interval = null;
+
+// export const isTokenValid = (expiresAt) => {
+//     if (interval) {
+//         clearInterval(interval);
+//         interval = null; // Set interval to null after clearing it
+//     }
+    
+//     interval = setInterval(() => {
+//         const time = new Date()
+//         const currentTimestamp = Date.parse(time)/1000
+//         console.log(currentTimestamp)
+//         if (currentTimestamp > expiresAt) {
+//             console.log("hemos entrado al if")
+//             localStorage.removeItem("passport")
+//             clearInterval(interval);
+//             interval = null; // Set interval to null after clearing it
+//         }
+//     }, 60000)
+// }
