@@ -245,26 +245,6 @@ export const updatePost = async (postId, data, token) => {
 	}
 };
 
-// export const getOwnPosts = async (token) => {
-// 	try {
-// 		const response = await fetch(`${URL}/posts/own`, {
-// 			method: 'GET',
-// 			headers: {
-// 				'Content-Type': 'application/json',
-// 				Authorization: `Bearer ${token}`,
-// 			},
-// 		});
-
-// 		if (!response.ok) {
-// 			throw new Error(`Error: ${response.status} ${response.statusText}`);
-// 		}
-
-// 		return await response.json();
-// 	} catch (error) {
-// 		return { success: false, message: error.message };
-// 	}
-// };
-
 export const getOwnPosts = async (token) => {
     try {
         const response = await fetch(`${URL}/posts/own`, {
@@ -436,3 +416,29 @@ export const updateUser = async (userId, userData, token) => {
 		return { success: false, message: error.message };
 	}
 };
+
+//Update post by Admin
+export const updatePostByAdmin = async (postId, data, token) => {
+	try {
+		const response = await fetch(`${URL}/posts/admin/${postId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify(data), 
+		});
+	
+		if (!response.ok) {
+			const errorDetails = await response.text();
+			throw new Error(
+				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+			);
+		}
+	
+		return await response.json();
+	} catch (error) {
+		throw new Error(`Error updating post: ${error.message}`);
+	}
+};
+
