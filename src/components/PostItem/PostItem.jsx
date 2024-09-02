@@ -1,77 +1,68 @@
-// import React, { useState } from 'react';
-// import './PostItem.css';
-
-// const PostItem = ({ post, onDelete, onEdit }) => {
-// 	const [isEditing, setIsEditing] = useState(false);
-// 	const [description, setDescription] = useState(post.description);
-// 	const [image, setImage] = useState(post.image);
-
-// 	const handleEdit = () => {
-// 		onEdit(post._id, { description, image });
-// 		setIsEditing(false);
-// 	};
-
-// 	return (
-// 		<div className='post-item'>
-// 			{isEditing ? (
-// 				<div>
-// 					<textarea value={description} onChange={(e) => setDescription(e.target.value)} />
-// 					<input type='text' value={image} onChange={(e) => setImage(e.target.value)} />
-// 					<button onClick={handleEdit}>Save</button>
-// 					<button onClick={() => setIsEditing(false)}>Cancel</button>
-// 				</div>
-// 			) : (
-// 				<div>
-// 					<p>{post.description}</p>
-// 					<img src={post.image} alt='Post' />
-// 					<button onClick={() => setIsEditing(true)}>Edit</button>
-// 					<button onClick={() => onDelete(post._id)}>Delete</button>
-// 				</div>
-// 			)}
-// 		</div>
-// 	);
-// };
-
-// export default PostItem;
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../contexts/AuthContext/AuthContext';
 import './PostItem.css';
 
-const PostItem = ({ post, onDelete, onEdit }) => {
-	const [isEditing, setIsEditing] = useState(false);
-	const [description, setDescription] = useState(post.description);
-	const [image, setImage] = useState(post.image);
+const PostItem = ({ post }) => {
+    const { token } = useAuth();
+    const [error, setError] = useState(null);
+    
+    useEffect(() => {
+      console.log('PostItem recibió:', post);
+      console.log('post.user:', post.user);
+      console.log('post.likes:', post.likes);
+    }, [post]);
 
-	const handleEdit = () => {
-		onEdit(post._id, { description, image });
-		setIsEditing(false);
-	  };
-
+  
+    const [likes, setLikes] = useState(post?.likes?.length || 0);
+  
+    const {
+      user,
+      description = '',
+      image = null,
+      createdAt = '',
+    } = post;
+  
+    const {
+      profilePicture = '',
+      first_name = 'Unknown',
+      last_name = 'User',
+      user_name = 'user',
+    } = user;
+  
     return (
-        <div className='post-item'>
-            {isEditing ? (
-                <div>
-                    <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                    <input
-                        type='text'
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                    />
-                    <button onClick={handleEdit}>Save</button>
-                    <button onClick={() => setIsEditing(false)}>Cancel</button>
-                </div>
-            ) : (
-                <div>
-                    <p>{post.description}</p>
-                    {post.image && <img src={post.image} alt='Post' />}
-                    <button onClick={() => setIsEditing(true)}>Edit</button>
-                    <button onClick={() => onDelete(post._id)}>Delete</button>
-                </div>
-            )}
+      <div className='post-card'>
+        <div className='post-header'>
+        <img
+            className='profile-picture-post'
+            src={profilePicture}
+            alt={`${post.user.first_name} ${last_name}`}
+          />
+  
+          <div className='user-info'>
+            <h4 className='user-name'>
+              {first_name} {last_name}
+            </h4>
+            <h6 className='user-username'>@{user_name}</h6>
+          </div>
+          <p className='post-date'>{new Date(createdAt).toLocaleDateString()}</p>
         </div>
+        <div className='post-body'>
+          <p className='post-description'>{description}</p>
+          {image && (
+            <img
+              className='post-image'
+              src={image}
+              alt='Post'
+            />
+          )}
+        </div>
+        <div className='post-footer'>
+          <span className='likes-counter'>
+            {likes} {likes === 1 ? 'Like' : 'Likes'}
+          </span>
+        </div>
+      </div>
     );
-};
+  };
 
 export default PostItem;

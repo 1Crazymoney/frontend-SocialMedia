@@ -5,31 +5,35 @@ import {
 	updatePost,
 } from '../../../services/apiCalls';
 import { useAuth } from '../../../contexts/AuthContext/AuthContext';
-import PostItem from '../../../components/PostItem/PostItem';
+import PostItem from '../../../components/PostItem/PostItem'
 import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
 
 const Profile = () => {
 	const [posts, setPosts] = useState([]);
 	const { token } = useAuth();
+	const [error, setError] = useState('');
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			if (!token) return;
-			try {
-				console.log('Token being sent:', token);
-				const result = await getOwnPosts(token);
-				console.log('API Response:', result);
-
-				if (result.success) {
-					setPosts(result.data);
-				}
-			} catch (error) {
-				console.error('Error fetching own posts:', error);
+		  try {
+			if (token) {
+			  const response = await getOwnPosts(token);
+	
+			  if (response.success === false) {
+				setError('Error fetching posts: ' + response.message);
+				console.error('Error fetching posts:', response.message);
+			  } else {
+				setPosts(response.data || []);
+			  }
 			}
+		  } catch (error) {
+			setError('Error fetching posts: ' + error.message);
+			console.error('Error fetching posts:', error);
+		  }
 		};
-
+	
 		fetchPosts();
-	}, [token]);
+	  }, [token]);
 
 	const handleDelete = async (postId) => {
 		try {
@@ -65,18 +69,14 @@ const Profile = () => {
 		<>
 			<ProfileHeader />
 			<div className='profile-posts'>
-				{posts.length === 0 ? (
-					<p>No posts available.</p>
-				) : (
-					posts.map((post) => (
-						<PostItem
-							key={post._id}
-							post={post}
-							onDelete={handleDelete}
-							onEdit={handleEdit}
-						/>
-					))
-				)}
+			{error && <p>{error}</p>}
+      {Array.isArray(posts) && posts.length > 0 ? (
+        posts.map((post) => (
+          <PostItem key={post._id} post={post} />
+        ))
+      ) : (
+        <p>No posafhklsdhfsahf</p>
+      )}
 			</div>
 		</>
 	);
