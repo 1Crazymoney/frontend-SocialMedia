@@ -43,12 +43,12 @@
     border: none;
     border-radius: 5px;
     color: #fff;
-    background-color: #007bff;
+    background-color: var(--button);
     transition: background-color 0.3s;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: var(--ligth-violet);
 }
 
 /* Adjusted button styling for different actions */

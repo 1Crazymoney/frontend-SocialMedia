@@ -66,13 +66,13 @@
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
-  background-color: #1da1f2;
+  background-color: var(--button);
   color: white;
   transition: background-color 0.3s;
 }
 
 .like-button.liked {
-  background-color: #17bf63;
+  background-color: var(--ligth-violet);
 }
 
 .likes-counter {

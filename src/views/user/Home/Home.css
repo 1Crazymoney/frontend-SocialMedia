@@ -1,30 +1,35 @@
 .home-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 1em;
+  gap: 20px;
+  box-sizing: border-box; /* Para que padding y border se incluyan en el ancho total */
+  max-width: 100vw; /* Evita que el contenedor exceda el ancho de la pantalla */
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
+
+.create-post-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 2em;
+  margin-top: 2em; 
+  box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+}
+
+@media (min-width: 768px) {
+  .create-post-wrapper {
+    padding-top: 4em;
   }
-  
-  .post-card {
-    width: 500px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .post-header {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .post-body img {
-    max-width: 100%;
-    margin-top: 10px;
-  }
-  
-  .post-footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
+}
+
+.post-card {
+  width: 100%;
+  max-width: 500px; /* Ancho máximo para pantallas más grandes */
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box; /* Incluye padding y border en el ancho */
+}
+

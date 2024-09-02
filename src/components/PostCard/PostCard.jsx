@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { likeOrNot } from '../../services/apiCalls';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
+import './PostCard.css'
 
 const PostCard = ({ post }) => {
   const { token } = useAuth();

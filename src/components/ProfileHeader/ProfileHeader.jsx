@@ -139,7 +139,7 @@ const ProfileHeader = () => {
 					)}
 				</div>
 				<button
-					className='edit-profile-btn'
+					className='button'
 					onClick={editing ? confirmButtonHandler : editButtonHandler}>
 					{editing ? 'Guardar' : 'Editar Perfil'}
 				</button>

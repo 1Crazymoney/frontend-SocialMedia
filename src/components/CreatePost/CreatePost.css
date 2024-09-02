@@ -1,62 +1,54 @@
-.create-post {
-    max-width: 30em;
-    margin: 2em auto;
-    padding: 1em;
-    background-color: #f9f9f9;
-    border: 0.1em solid #ddd;
-    border-radius: 0.5em;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+.create-post-container {
+  border: 1px solid #ddd;
+  border-radius: 0.5em;
+  padding: 1em;
+  background-color: #fff;
+  max-width: 100%; /* Asegura que el contenedor no exceda el ancho disponible */
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Evita desbordamiento horizontal */
+}
+
+@media (min-width: 768px) {
+  .create-post-container {
+    max-width: 500px; /* Tamaño original para pantallas más grandes */
   }
-  
-  .create-post h2 {
-    margin-top: 0;
-    font-weight: bold;
-    font-size: 1.5em;
-    color: #333;
-  }
-  
-  .create-post form {
-    margin-top: 1em;
-  }
-  
-  .create-post label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-    font-size: 1em;
-    color: #666;
-  }
-  
-  .create-post input[type="text"],
-  .create-post textarea {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 0.1em solid #ccc;
-    border-radius: 0.25em;
-    font-size: 1em;
-  }
-  
-  .create-post input[type="file"] {
-    margin-bottom: 1em;
-  }
-  
-  .create-post button[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.25em;
-    font-size: 1em;
-    cursor: pointer;
-  }
-  
-  .create-post button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  .create-post .error {
-    color: #f00;
-    font-size: 0.8em;
-    margin-bottom: 0.5em;
-  }
+}
+
+.create-post-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-post-container label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+.create-post-container input[type='text'],
+.create-post-container input[type='file'] {
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 0.25em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.create-post-container button[type='submit'] {
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+  background-color: var(--button);
+  color: white;
+  transition: var(--light-violet) 0.3s;
+}
+
+.create-post-container button[type='submit']:hover {
+  background-color: var(--button);
+}
+

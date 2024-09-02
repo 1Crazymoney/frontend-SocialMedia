@@ -7,7 +7,7 @@
 }
 
 .navbar {
-  background-color: #4a90e2;
+  background-color: #894ae2;
   height: 15%;
   display: flex;
   flex-direction: row;
@@ -43,7 +43,7 @@
 }
 
 .sidebar {
-  background-color: #34495e;
+  background-color: #894ae2;
   height: 10%;
   display: flex;
   flex-direction: column;
