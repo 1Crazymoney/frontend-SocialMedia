@@ -420,27 +420,32 @@ export const updatePostByAdmin = async (postId, data, token) => {
 };
 
 //Delete user by ADMIN
-export const deleteUserByAdmin = async (token, userId) => {
-	try {
-		const response = await fetch(`${URL}/users/admin/${userId}`, {
-			method: 'DELETE',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-		});
+export const deleteUserByAdmin = async (userId, token) => {
+    try {
+        console.log('Deleting user:', userId);
+        console.log('Token:', token);
 
-		const data = await response.json();
+        const response = await fetch(`${URL}/users/admin/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
 
-		if (response.ok) {
-			return { success: true, message: data.message };
-		} else {
-			return { success: false, message: data.message || response.statusText };
-		}
-	} catch (error) {
-		console.error(error);
-		return { success: false, message: error.message };
-	}
+        const data = await response.json();
+
+        console.log('Delete response:', data);
+
+        if (response.ok) {
+            return { success: true, message: data.message };
+        } else {
+            return { success: false, message: data.message || response.statusText };
+        }
+    } catch (error) {
+        console.error('Error in deleteUserByAdmin:', error);
+        return { success: false, message: error.message };
+    }
 };
 
 //Update user ADMIN

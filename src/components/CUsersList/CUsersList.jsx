@@ -10,12 +10,6 @@ export const CUsersList = () => {
   const [editingUser, setEditingUser] = useState(null);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      // Manejar el caso cuando el usuario no está logueado
-    }
-  }, [isLoggedIn]);
-
-  useEffect(() => {
     const fetchUsers = async () => {
       const response = await getAllUsers(token);
       if (response.success) {
@@ -58,17 +52,19 @@ export const CUsersList = () => {
   };
 
   const handleDelete = async (userId) => {
-      try {
-          const response = await deleteUserByAdmin(userId, token);
-          if (response.success) {
-              setUsers(users.filter((user) => user._id !== userId));
-          } else {
-              console.error("Error deleting user:", response.message);
-          }
-      } catch (error) {
-          console.error("Error during delete:", error);
-      }
-  };
+    console.log('Attempting to delete user:', userId);
+    try {
+        const response = await deleteUserByAdmin(userId, token);
+        if (response.success) {
+            setUsers(users.filter((user) => user._id !== userId));
+            console.log('User deleted successfully');
+        } else {
+            console.error("Error deleting user:", response.message);
+        }
+    } catch (error) {
+        console.error("Error during delete:", error);
+    }
+};
 
   const handleInputChange = (e) => {
     setEditingUser({ ...editingUser, [e.target.name]: e.target.value });
