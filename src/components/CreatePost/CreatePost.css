@@ -3,17 +3,17 @@
   border-radius: 0.5em;
   padding: 1em;
   background-color: #fff;
-  max-width: 100%; /* Asegura que el contenedor no exceda el ancho disponible */
+  max-width: 100%;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden; /* Evita desbordamiento horizontal */
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
   .create-post-container {
-    max-width: 500px; /* Tamaño original para pantallas más grandes */
+    max-width: 500px;
   }
 }
 
@@ -28,7 +28,17 @@
   color: #333;
 }
 
-.create-post-container input[type='text'],
+.create-post-container textarea {
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 0.25em;
+  width: 100%;
+  box-sizing: border-box;
+  height: 150px; /* Ajusta la altura según sea necesario */
+  resize: vertical; /* Permite redimensionar verticalmente si es necesario */
+}
+
 .create-post-container input[type='file'] {
   padding: 0.5em;
   margin-bottom: 1em;
@@ -51,4 +61,3 @@
 .create-post-container button[type='submit']:hover {
   background-color: var(--light-violet);
 }
-
