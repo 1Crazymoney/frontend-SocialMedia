@@ -22,8 +22,6 @@ const Profile = () => {
 
 				if (result.success) {
 					setPosts(result.data);
-				} else {
-					console.error(result.message);
 				}
 			} catch (error) {
 				console.error('Error fetching own posts:', error);
@@ -46,7 +44,7 @@ const Profile = () => {
 		}
 	};
 
-	const handleEdit = async (postId, updatedData) => {
+	const handleEdit = async (postId, updatedData, token) => {
 		try {
 			const result = await updatePost(postId, updatedData, token);
 			if (result.success) {

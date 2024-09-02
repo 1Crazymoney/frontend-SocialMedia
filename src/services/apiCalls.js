@@ -464,6 +464,7 @@ export const updateUserByAdmin = async (userId, userData, token) => {
 
         return await response.json();
     } catch (error) {
+        console.error("Error in updateUserByAdmin:", error);
         return { success: false, message: error.message };
     }
 };
