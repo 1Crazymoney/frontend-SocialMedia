@@ -58,11 +58,12 @@ const PostCard = ({ post }) => {
   return (
     <div className='post-card'>
       <div className='post-header'>
-        <img
+      <img
           className='profile-picture-post'
           src={profilePicture}
           alt={`${first_name} ${last_name}`}
         />
+
         <div className='user-info'>
           <h4 className='user-name'>
             {first_name} {last_name}
