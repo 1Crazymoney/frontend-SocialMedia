@@ -446,6 +446,10 @@ export const deleteUserByAdmin = async (token, userId) => {
 //Update user ADMIN
 export const updateUserByAdmin = async (userId, userData, token) => {
     try {
+        console.log("Sending update request for user:", userId);
+        console.log("Update data:", userData);
+        console.log("Token:", token);
+
         const response = await fetch(`${URL}/users/admin/${userId}`, {
             method: 'PUT',
             headers: {
@@ -455,14 +459,16 @@ export const updateUserByAdmin = async (userId, userData, token) => {
             body: JSON.stringify(userData),
         });
 
+        const responseData = await response.json();
+
         if (!response.ok) {
-            const errorDetails = await response.text();
             throw new Error(
-                `Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+                `Error: ${response.status} ${response.statusText} - ${responseData.message || 'Unknown error'}`,
             );
         }
 
-        return await response.json();
+        console.log("Update response:", responseData);
+        return responseData;
     } catch (error) {
         console.error("Error in updateUserByAdmin:", error);
         return { success: false, message: error.message };

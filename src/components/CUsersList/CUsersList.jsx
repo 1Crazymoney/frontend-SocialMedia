@@ -19,7 +19,10 @@ export const CUsersList = () => {
     const fetchUsers = async () => {
       const response = await getAllUsers(token);
       if (response.success) {
+        console.log("Users fetched:", response.data);
         setUsers(response.data);
+      } else {
+        console.error("Error fetching users:", response.message);
       }
     };
     if (token) {
@@ -34,14 +37,17 @@ export const CUsersList = () => {
   const handleSave = async () => {
     if (!editingUser) return;
     
-    console.log("Data being sent:", editingUser);
+    const { _id, email, first_name, last_name, role } = editingUser;
+    const userData = { email, first_name, last_name, role };
+    
+    console.log("Data being sent:", userData);
     try {
-        const response = await updateUserByAdmin(editingUser._id, editingUser, token);
+        const response = await updateUserByAdmin(_id, userData, token);
         if (response.success) {
             setUsers(users.map((user) => 
-                user._id === editingUser._id ? { ...user, ...editingUser } : user
+                user._id === _id ? { ...user, ...userData } : user
             ));
-            console.log("User updated successfully");
+            console.log("User updated successfully:", response.data);
             setEditingUser(null);
         } else {
             console.error("Error updating user:", response.message);
@@ -96,6 +102,12 @@ export const CUsersList = () => {
               />
               <CInput
                 type='text'
+                name='last_name'
+                value={editingUser.last_name}
+                emitFunction={handleInputChange} 
+              />
+              <CInput
+                type='text'
                 name='role'
                 value={editingUser.role}
                 emitFunction={handleInputChange} 
@@ -118,7 +130,7 @@ export const CUsersList = () => {
           ) : (
             <>
               <div className='content'>{user.email}</div>
-              <div className='content'>{user.first_name || 'N/A'}</div>
+              <div className='content'>{`${user.first_name || ''} ${user.last_name || ''}`.trim() || 'N/A'}</div>
               <div className='content'>{user.role}</div>
               <div>
                 <CInput
