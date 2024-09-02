@@ -145,7 +145,7 @@ const ProfileHeader = () => {
 				</button>
 				{editing && (
 					<button
-						className='cancel-edit-btn'
+						className='button'
 						onClick={editButtonHandler}>
 						Cancelar
 					</button>

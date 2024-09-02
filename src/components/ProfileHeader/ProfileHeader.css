@@ -1,0 +1,116 @@
+/* Estilos para el contenedor principal del perfil */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4; /* Color de fondo claro para el perfil */
+    border-radius: 8px; /* Bordes redondeados para el perfil */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  /* Estilo para la foto de portada */
+  .cover-photo {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+    margin-bottom: 20px;
+  }
+  
+  /* Contenedor de la información del perfil */
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilo para la imagen del perfil */
+  .profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #ffffff; /* Borde blanco alrededor de la imagen */
+    margin-bottom: 10px;
+  }
+  
+  /* Contenedor de los detalles del usuario */
+  .user-details {
+    text-align: center;
+  }
+  
+  /* Estilo para los nombres y detalles del usuario */
+  .user-details h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333; /* Color del texto principal */
+  }
+  
+  .username {
+    color: #555; /* Color del nombre de usuario */
+    font-style: italic;
+    margin: 5px 0;
+  }
+  
+  .about {
+    color: #777; /* Color del texto del "Acerca de ti" */
+    margin: 10px 0;
+    font-size: 1em;
+  }
+  
+  /* Contenedor de estadísticas de seguidores y seguidos */
+  .stats {
+    margin: 10px 0;
+  }
+  
+  .stats span {
+    display: block;
+    font-size: 0.9em;
+    color: #444; /* Color del texto de las estadísticas */
+    margin: 5px 0;
+  }
+  
+  /* Estilo para los botones */
+  .button {
+    background-color: #894ae2; /* Color de fondo del botón */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+  }
+  
+  .button:hover {
+    background-color: #7037b4; /* Color de fondo del botón al pasar el cursor */
+  }
+  
+  .cancel-edit-btn {
+    background-color: #e74c3c; /* Color de fondo del botón de cancelar */
+  }
+  
+  /* Estilo para los mensajes de error y carga */
+  .error-message,
+  .loading-message {
+    text-align: center;
+    color: #e74c3c; /* Color del texto del mensaje de error */
+    margin: 20px;
+    font-size: 1.2em;
+  }
+  
+  /* Estilos para los inputs en modo edición */
+  .edit-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+  }
+  
