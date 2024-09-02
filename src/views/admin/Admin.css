@@ -48,7 +48,7 @@
 }
 
 .button:hover {
-    background-color: var(--ligth-violet);
+    background-color: var(--light-violet);
 }
 
 /* Adjusted button styling for different actions */

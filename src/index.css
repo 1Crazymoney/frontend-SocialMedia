@@ -7,8 +7,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --light-violet: #894ae2;
-  --button: #561098;
+  --light-violet: #b493dd;
+  --button: #4d2a79;
 }
 
 a {

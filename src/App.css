@@ -6,29 +6,6 @@
   width: 100vw;
 }
 
-.navbar {
-  background-color: #894ae2;
-  height: 15%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-item {
-  width: 100%;
-  padding: 10px 15px;
-  text-align: center;
-  color: #ffffff;
-  background-color: var(--light-violet);
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-.nav-item:hover {
-  background-color: var(--button);
-}
-
 .body {
   background-color: #f0f0f0;
   color: black;

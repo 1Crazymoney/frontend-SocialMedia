@@ -72,7 +72,7 @@
 }
 
 .like-button.liked {
-  background-color: var(--ligth-violet);
+  background-color: var(--light-violet);
 }
 
 .likes-counter {
