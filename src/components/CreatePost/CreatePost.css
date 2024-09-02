@@ -49,6 +49,6 @@
 }
 
 .create-post-container button[type='submit']:hover {
-  background-color: var(--button);
+  background-color: var(--light-violet);
 }
 

@@ -45,10 +45,7 @@ export const Login = () => {
 	};
 
 	return (
-		<>
-			<div>
-				<h2>Connect with your other side</h2>
-			</div>
+		<div>
 			<h1>Login</h1>
 			<CForm
 				fields={loginFields}
@@ -57,6 +54,6 @@ export const Login = () => {
 			/>
 			{errors.email && <div>{errors.email}</div>}
 			{errors.password && <div>{errors.password}</div>}
-		</>
+		</div>
 	);
 };

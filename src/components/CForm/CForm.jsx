@@ -33,7 +33,7 @@ export const CForm = ({ fields, onSubmit, submitButtonText }) => {
 				name='submit-button'
 				value={submitButtonText}
 				clickFunction={handleSubmit}
-				className='button c-form-submit-button' /* Usa la clase `button` existente */
+				className='button c-form-submit-button'
 			/>
 		</div>
 	);
