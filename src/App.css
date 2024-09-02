@@ -13,23 +13,20 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
 }
 
 .nav-item {
-  margin: 5px;
+  width: 100%;
   padding: 10px 15px;
   text-align: center;
-  text-decoration: none;
-  color: #333;
-  background-color: #e0e0e0;
-  border-radius: 5px;
+  color: #ffffff;
+  background-color: var(--light-violet);
   transition: background-color 0.3s ease;
   cursor: pointer;
 }
 
 .nav-item:hover {
-  background-color: #d1d1d1;
+  background-color: var(--button);
 }
 
 .body {
