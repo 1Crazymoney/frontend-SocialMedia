@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CInput } from '../CInput/CInput';
+import './CForm.css';
 
 export const CForm = ({ fields, onSubmit, submitButtonText }) => {
 	const [formData, setFormData] = useState({});
@@ -16,9 +17,9 @@ export const CForm = ({ fields, onSubmit, submitButtonText }) => {
 	};
 
 	return (
-		<div>
+		<div className='c-form-container'>
 			{fields.map((field, index) => (
-				<div key={index}>
+				<div key={index} className='c-form-field'>
 					<CInput
 						type={field.type}
 						name={field.name}
@@ -32,7 +33,9 @@ export const CForm = ({ fields, onSubmit, submitButtonText }) => {
 				name='submit-button'
 				value={submitButtonText}
 				clickFunction={handleSubmit}
+				className='button c-form-submit-button' /* Usa la clase `button` existente */
 			/>
 		</div>
 	);
 };
+

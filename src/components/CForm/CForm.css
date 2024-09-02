@@ -1,0 +1,62 @@
+/* Estilos generales para el contenedor del formulario */
+.c-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 20px;
+    max-width: 600px; /* Máximo ancho del formulario */
+    width: 100%;
+    margin: 20px auto; /* Centra el formulario horizontalmente */
+  }
+  
+  /* Estilo para cada campo del formulario */
+  .c-form-field {
+    width: 100%;
+    margin-bottom: 15px; /* Espaciado entre campos */
+  }
+  
+  /* Estilo para el input dentro de c-form-field */
+  .c-form-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 4px; /* Bordes redondeados en los campos */
+    box-sizing: border-box; /* Incluye el padding y border en el width total */
+    font-size: 1em; /* Tamaño de fuente uniforme */
+  }
+  
+  /* Estilo para el botón de envío usando la clase `.button` */
+  .c-form-submit-button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Asegúrate de que el botón de envío tenga un color de fondo consistente */
+  .c-form-submit-button {
+    background-color: var(--button); /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto del botón */
+  }
+  
+  .c-form-submit-button:hover {
+    background-color: var(--light-violet); /* Color de fondo del botón al pasar el cursor */
+  }
+  
+  /* Estilo para mensajes de error o éxito (si los usas en el futuro) */
+  .c-form-message {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #e74c3c; /* Color del texto del mensaje de error */
+  }
+  
+  /* Puedes usar la clase `c-form-message` para mensajes de éxito con otro color si es necesario */
+  .c-form-message-success {
+    color: #2ecc71; /* Color del texto del mensaje de éxito */
+  }
+  
