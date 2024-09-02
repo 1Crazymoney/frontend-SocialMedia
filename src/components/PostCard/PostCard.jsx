@@ -16,8 +16,7 @@ const PostCard = ({ post }) => {
   const [isLiked, setIsLiked] = useState(post?.isLiked || false);
 
   if (!post || !post.user) {
-    console.error('Post o post.user es null o undefined:', post);
-    return <div>Error: Datos del post no válidos</div>;
+    return console.error('Post o post.user es null o undefined:', post);;
   }
 
   const {

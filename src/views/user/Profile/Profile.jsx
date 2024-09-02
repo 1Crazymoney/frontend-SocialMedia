@@ -69,13 +69,12 @@ const Profile = () => {
 		<>
 			<ProfileHeader />
 			<div className='profile-posts'>
-			{error && <p>{error}</p>}
       {Array.isArray(posts) && posts.length > 0 ? (
         posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))
       ) : (
-        <p>No posafhklsdhfsahf</p>
+        <p>Make your first post!</p>
       )}
 			</div>
 		</>

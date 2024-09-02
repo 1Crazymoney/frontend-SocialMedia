@@ -2,8 +2,9 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
+  background-color: var(--button);
 }
 
 .body {
@@ -17,7 +18,7 @@
 }
 
 .sidebar {
-  background-color: #894ae2;
+  background-color: var(--button);
   height: 10%;
   display: flex;
   flex-direction: column;
@@ -31,24 +32,26 @@
 
   .navbar {
     width: 15%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    background-color: var(--button);
   }
 
   .body {
     width: 80%;
-    height: 100vh;
+    min-height: 100vh;
   }
 
   .sidebar {
     width: 15%;
-    height: 100vh;
+    min-height: 100vh;
     align-self: flex-end;
     justify-self: flex-end;
     display: flex;
     flex-direction: column;
+    background-color: var(--button);
   }
 }
