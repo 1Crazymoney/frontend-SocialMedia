@@ -30,10 +30,40 @@ The social network offers the following features:
 | **Edit users**| ![Edit Users](https://i.postimg.cc/mg01Dkbw/Captura-de-pantalla-2024-09-02-a-la-s-22-31-40.png)|
 | **Edit Posts**     | ![Edit Posts](https://i.postimg.cc/LXVJNVjC/Captura-de-pantalla-2024-09-02-a-la-s-22-32-11.png)         |
 
-### Local Installation
-Clone this repository: $git clone https://github.com/More-Pe/frontend-SocialMedia
-Install node modules: $ npm install -y
-Start the development server: $ npm run dev
+## 🧑‍💻 Local Installation
+
+### 1. Clone this repository
+```git clone https://github.com/More-Pe/frontend-SocialMedia```
+### 2. Install dependencies
+```npm install -y```
+### 3. Configure the environment
+Backend Connection: Ensure that the backend is running properly on your local machine or on an accessible server.
+In the .env file in the frontend, specify the backend URL.
+### 4. Start the development server
+```npm run dev```
+### 5. 5. User Credentials
+To perform tests, you can use the following pre-registered users that are defined in the backend seeders:
+
+**Superadmin**
+
+Email: admin@admin.com
+Password: 123456789
+
+**Regular User:**
+Email: johndoe@example.com
+Password: 123456789
+
+You can use these credentials to log in and explore the system's functionalities.
+
+### 6. Testing the System
+Once the development server is running, open your browser and navigate to http://localhost:5173 (or the port indicated in your terminal). From there, you can interact with the application.
+
+## 🗄️ Connecting to the Backend
+
+Read the instructions by going to:
+
+[Backend Social Media](https://github.com/More-Pe/backend-SocialMedia)
+
 
 
 
