@@ -216,34 +216,31 @@ export const deletePost = async (postId, token) => {
 
 export const updatePost = async (postId, data, token) => {
 	if (!postId || !data || !token) {
-		throw new Error('Post ID, data, and token are required');
+	  throw new Error('Post ID, data, and token are required');
 	}
-
+  
 	try {
-		const response = await fetch(`${URL}/posts`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-			body: JSON.stringify({
-				postId,
-				...data,
-			}),
-		});
-
-		if (!response.ok) {
-			const errorDetails = await response.text();
-			throw new Error(
-				`Error: ${response.status} ${response.statusText} - ${errorDetails}`,
-			);
-		}
-
-		return await response.json();
+	  const response = await fetch(`${URL}/posts/${postId}`, { 
+		method: 'PUT',
+		headers: {
+		  'Content-Type': 'application/json',
+		  Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(data),
+	  });
+  
+	  if (!response.ok) {
+		const errorDetails = await response.text();
+		throw new Error(
+		  `Error: ${response.status} ${response.statusText} - ${errorDetails}`,
+		);
+	  }
+  
+	  return await response.json();
 	} catch (error) {
-		throw error;
+	  throw error;
 	}
-};
+  };
 
 export const getOwnPosts = async (token) => {
 	try {

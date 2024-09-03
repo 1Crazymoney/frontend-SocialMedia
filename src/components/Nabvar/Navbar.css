@@ -4,6 +4,7 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
+    align-items: center;
   }
   
   .navbar {
@@ -49,8 +50,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      align-items: center; /* Centra la imagen en el contenedor */
       padding: 10px 0; /* Asegura un poco de espacio en los bordes */
     }
   

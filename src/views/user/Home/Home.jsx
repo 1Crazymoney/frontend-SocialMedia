@@ -23,26 +23,23 @@ const Home = () => {
       try {
         if (token) {
           const response = await getAllPosts(token);
-
+          console.log(response);
           if (response.success === false) {
             setError('Error fetching posts: ' + response.message);
             console.error('Error fetching posts:', response.message);
           } else {
-            setPosts(response.data || []);
+            const validPosts = (response.data || []).filter(post => post && post._id);
+            setPosts(validPosts);
           }
-        } else {
-          setError('Token is invalid or expired.');
-          console.error('Token is invalid or expired.');
-          logout();
         }
       } catch (error) {
         setError('Error fetching posts: ' + error.message);
         console.error('Error fetching posts:', error);
       }
     };
-
+  
     fetchPosts();
-  }, [token, logout]);
+  }, [token]);
 
   return (
     <div className="home-page">

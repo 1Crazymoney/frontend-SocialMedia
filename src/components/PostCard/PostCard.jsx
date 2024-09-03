@@ -5,18 +5,16 @@ import './PostCard.css'
 
 const PostCard = ({ post }) => {
   const { token } = useAuth();
-  
+
   useEffect(() => {
     console.log('PostCard recibió:', post);
-    console.log('post.user:', post.user);
-    console.log('post.likes:', post.likes);
+    console.log('post.user:', post?.user);
+    console.log('post.likes:', post?.likes);
   }, [post]);
 
-  const [likes, setLikes] = useState(post?.likes?.length || 0);
-  const [isLiked, setIsLiked] = useState(post?.isLiked || false);
-
-  if (!post || !post.user) {
-    return console.error('Post o post.user es null o undefined:', post);;
+  if (!post) {
+    console.error('Post is null or undefined:', post);
+    return null;
   }
 
   const {
@@ -24,14 +22,18 @@ const PostCard = ({ post }) => {
     description = '',
     image = null,
     createdAt = '',
+    likes: postLikes = [],
   } = post;
+
+  const [likes, setLikes] = useState(postLikes.length);
+  const [isLiked, setIsLiked] = useState(post.isLiked || false);
 
   const {
     profilePicture = '',
     first_name = 'Unknown',
     last_name = 'User',
     user_name = 'user',
-  } = user;
+  } = user || {};
 
   const toggleLike = async () => {
     try {
@@ -57,12 +59,11 @@ const PostCard = ({ post }) => {
   return (
     <div className='post-card'>
       <div className='post-header'>
-      <img
+        <img
           className='profile-picture-post'
           src={profilePicture}
           alt={`${first_name} ${last_name}`}
         />
-
         <div className='user-info'>
           <h4 className='user-name'>
             {first_name} {last_name}
@@ -94,6 +95,5 @@ const PostCard = ({ post }) => {
     </div>
   );
 };
-
 
 export default PostCard;

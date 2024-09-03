@@ -2,19 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
 import './PostItem.css';
 
-const PostItem = ({ post }) => {
+const PostItem = ({ post, onEdit, onDelete }) => {
     const { token } = useAuth();
-    const [error, setError] = useState(null);
-    
+    const [likes, setLikes] = useState(post?.likes?.length || 0);
+
     useEffect(() => {
       console.log('PostItem recibió:', post);
-      console.log('post.user:', post.user);
-      console.log('post.likes:', post.likes);
     }, [post]);
 
-  
-    const [likes, setLikes] = useState(post?.likes?.length || 0);
-  
     const {
       user,
       description = '',
@@ -28,16 +23,15 @@ const PostItem = ({ post }) => {
       last_name = 'User',
       user_name = 'user',
     } = user;
-  
+
     return (
       <div className='post-card'>
         <div className='post-header'>
-        <img
+          <img
             className='profile-picture-post'
             src={profilePicture}
-            alt={`${post.user.first_name} ${last_name}`}
+            alt={`${first_name} ${last_name}`}
           />
-  
           <div className='user-info'>
             <h4 className='user-name'>
               {first_name} {last_name}
@@ -60,9 +54,12 @@ const PostItem = ({ post }) => {
           <span className='likes-counter'>
             {likes} {likes === 1 ? 'Like' : 'Likes'}
           </span>
+          <button onClick={() => onEdit(post._id)} className='button'>Edit</button>
+          <button onClick={() => onDelete(post._id)} className='button'>Delete</button>
         </div>
       </div>
     );
-  };
+};
 
 export default PostItem;
+

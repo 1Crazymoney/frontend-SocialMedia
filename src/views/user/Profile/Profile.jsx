@@ -8,6 +8,7 @@ import { useAuth } from '../../../contexts/AuthContext/AuthContext';
 import PostItem from '../../../components/PostItem/PostItem'
 import ProfileHeader from '../../../components/ProfileHeader/ProfileHeader';
 
+
 const Profile = () => {
 	const [posts, setPosts] = useState([]);
 	const { token } = useAuth();
@@ -17,12 +18,14 @@ const Profile = () => {
 		const fetchPosts = async () => {
 		  try {
 			if (token) {
+			  console.log('Token:', token); // Agregar este console.log
 			  const response = await getOwnPosts(token);
 	
 			  if (response.success === false) {
 				setError('Error fetching posts: ' + response.message);
 				console.error('Error fetching posts:', response.message);
 			  } else {
+				console.log('Response:', response); // Agregar este console.log
 				setPosts(response.data || []);
 			  }
 			}
@@ -48,37 +51,42 @@ const Profile = () => {
 		}
 	};
 
-	const handleEdit = async (postId, updatedData, token) => {
+	const handleEdit = async (postId, updatedData) => { 
 		try {
-			const result = await updatePost(postId, updatedData, token);
-			if (result.success) {
-				setPosts(
-					posts.map((post) =>
-						post._id === postId ? { ...post, ...updatedData } : post,
-					),
-				);
-			} else {
-				console.error(result.message);
-			}
+		  const result = await updatePost(postId, updatedData, token); 
+		  if (result.success) {
+			setPosts(
+			  posts.map((post) =>
+				post._id === postId ? { ...post, ...updatedData } : post,
+			  ),
+			);
+		  } else {
+			console.error(result.message);
+		  }
 		} catch (error) {
-			console.error('Error updating post:', error);
+		  console.error('Error updating post:', error);
 		}
-	};
+	  };
 
 	return (
 		<>
-			<ProfileHeader />
-			<div className='profile-posts'>
-      {Array.isArray(posts) && posts.length > 0 ? (
-        posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))
-      ) : (
-        <p>Make your first post!</p>
-      )}
-			</div>
+		  <ProfileHeader />
+		  <div className='profile-posts'>
+			{Array.isArray(posts) && posts.length > 0 ? (
+			  posts.map((post) => (
+				<PostItem 
+  key={post._id} 
+  post={post} 
+  onEdit={(updatedData) => handleEdit(post._id, updatedData)} 
+  onDelete={() => handleDelete(post._id)} 
+/>
+			  ))
+			) : (
+			  <p>Make your first post!</p>
+			)}
+		  </div>
 		</>
-	);
+	  );
 };
 
 export default Profile;

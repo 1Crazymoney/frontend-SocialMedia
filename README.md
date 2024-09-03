@@ -9,13 +9,13 @@ This project is designed to develop the frontend system for a dynamic social net
 ## 🛠️ Features
 The social network offers the following features:
 
-User Authentication: Users can register and log in to the application. Registration involves creating a new account with email and password, while logging in generates a token for authenticated access.
+**User Authentication:** Users can register and log in to the application. Registration involves creating a new account with email and password, while logging in generates a token for authenticated access.
 
-User Management: Authenticated users can view and update their own profiles. Superadmins can view all users, and users can update their profiles with new details such as first name, last name, nickname, email, and password.
+**User Management:** Authenticated users can view and update their own profiles. Superadmins can view all users, and users can update their profiles with new details such as first name, last name, nickname, email, and password.
 
-Post Management: Users can create, update, and delete posts. Each post includes a description and an optional image. Users can view their own posts, all posts, or posts by other users. Additionally, users can like or unlike posts to express their preferences.
+**Post Management:** Users can create, update, and delete posts. Each post includes a description and an optional image. Users can view their own posts, all posts, or posts by other users. Additionally, users can like or unlike posts to express their preferences.
 
-Error Handling: The system includes comprehensive error handling to manage issues like invalid user credentials, missing required fields, and failed database operations.
+**Error Handling:** The system includes comprehensive error handling to manage issues like invalid user credentials, missing required fields, and failed database operations.
 
 ## ⚙️ Stack
 <img alt="react logo" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
