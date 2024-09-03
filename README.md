@@ -20,6 +20,16 @@ Error Handling: The system includes comprehensive error handling to manage issue
 ## ⚙️ Stack
 <img alt="react logo" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 
+## 📸 Screenshots
+
+| Page        | Screenshot                                       |
+|-------------|--------------------------------------------------|
+| **Home Page**   | ![Home Page](https://i.postimg.cc/fR30Dmhy/Captura-de-pantalla-2024-09-02-a-la-s-22-31-04.png)   |
+| **Profile**   | ![Profile](https://i.postimg.cc/9FQ7gs8G/Captura-de-pantalla-2024-09-02-a-la-s-22-30-15.png)     |
+| **Editing Profile info**  | ![Editing Profile Info](https://i.postimg.cc/65bGkzgF/Captura-de-pantalla-2024-09-02-a-la-s-22-30-41.png)  |
+| **Edit users**| ![Edit Users](https://postimg.cc/DSPwp24J)|
+| **Edit Posts**     | ![Edit Posts](https://postimg.cc/gXnc08S8)         |
+
 ### Local Installation
 Clone this repository: $git clone https://github.com/More-Pe/frontend-SocialMedia
 Install node modules: $ npm install -y
