@@ -5,10 +5,8 @@ import './PostItem.css';
 const PostItem = ({ post, onEdit, onDelete }) => {
     const { token } = useAuth();
     const [likes, setLikes] = useState(post?.likes?.length || 0);
-
-    useEffect(() => {
-      console.log('PostItem recibió:', post);
-    }, [post]);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedDescription, setEditedDescription] = useState(post.description);
 
     if (!post) {
       console.error('PostItem received null or undefined post');
@@ -29,6 +27,11 @@ const PostItem = ({ post, onEdit, onDelete }) => {
       user_name = 'user',
     } = user || {};
 
+    const handleEditSubmit = () => {
+      onEdit({ description: editedDescription });
+      setIsEditing(false);
+    };
+
     return (
       <div className='post-card'>
         <div className='post-header'>
@@ -46,7 +49,14 @@ const PostItem = ({ post, onEdit, onDelete }) => {
           <p className='post-date'>{new Date(createdAt).toLocaleDateString()}</p>
         </div>
         <div className='post-body'>
-          <p className='post-description'>{description}</p>
+          {isEditing ? (
+            <textarea
+              value={editedDescription}
+              onChange={(e) => setEditedDescription(e.target.value)}
+            />
+          ) : (
+            <p className='post-description'>{description}</p>
+          )}
           {image && (
             <img
               className='post-image'
@@ -59,7 +69,11 @@ const PostItem = ({ post, onEdit, onDelete }) => {
           <span className='likes-counter'>
             {likes} {likes === 1 ? 'Like' : 'Likes'}
           </span>
-          <button onClick={() => onEdit(post._id)} className='button'>Edit</button>
+          {isEditing ? (
+            <button onClick={handleEditSubmit} className='button'>Save</button>
+          ) : (
+            <button onClick={() => setIsEditing(true)} className='button'>Edit</button>
+          )}
           <button onClick={() => onDelete(post._id)} className='button'>Delete</button>
         </div>
       </div>

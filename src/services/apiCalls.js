@@ -220,7 +220,9 @@ export const updatePost = async (postId, data, token) => {
 	}
   
 	try {
-	  const response = await fetch(`${URL}/posts/${postId}`, { 
+	  
+  
+	  const response = await fetch(`${URL}/posts/${postId}`, {
 		method: 'PUT',
 		headers: {
 		  'Content-Type': 'application/json',
@@ -231,13 +233,17 @@ export const updatePost = async (postId, data, token) => {
   
 	  if (!response.ok) {
 		const errorDetails = await response.text();
+		
 		throw new Error(
 		  `Error: ${response.status} ${response.statusText} - ${errorDetails}`,
 		);
 	  }
   
-	  return await response.json();
+	  const result = await response.json();
+	  
+	  return result;
 	} catch (error) {
+	    
 	  throw error;
 	}
   };
@@ -260,7 +266,7 @@ export const updatePost = async (postId, data, token) => {
 	  const data = await response.json();
 	  return { success: true, data: data.data };
 	} catch (error) {
-	  console.error('Error in getOwnPosts:', error);
+	 
 	  return { success: false, message: error.message };
 	}
   };
@@ -277,13 +283,13 @@ export const getAllPosts = async (token) => {
 
 		if (!response.ok) {
 			const errorDetails = await response.text();
-			console.error(`Error fetching posts: ${errorDetails}`);
+			
 			throw new Error(`Error: ${response.status} ${response.statusText}`);
 		}
 
 		return await response.json();
 	} catch (error) {
-		console.error('Error in getAllPosts:', error);
+		
 		return { success: false, message: error.message };
 	}
 };

@@ -15,12 +15,11 @@ const Profile = () => {
       setIsLoading(true);
       try {
         if (token) {
-          console.log('Fetching posts with token:', token);
           const response = await getOwnPosts(token);
-          console.log('getOwnPosts response:', response);
+    
 
           if (response.success === false) {
-            setError('Error fetching posts: ' + response.message);
+            setError(response.message || 'Error fetching posts');
             console.error('Error fetching posts:', response.message);
           } else {
             setPosts(response.data || []);
@@ -53,6 +52,7 @@ const Profile = () => {
   const handleEdit = async (postId, updatedData) => { 
     try {
       const result = await updatePost(postId, updatedData, token); 
+    
       if (result.success) {
         setPosts(
           posts.map((post) =>
@@ -63,7 +63,7 @@ const Profile = () => {
         console.error(result.message);
       }
     } catch (error) {
-      console.error('Error updating post:', error);
+    
     }
   };
 

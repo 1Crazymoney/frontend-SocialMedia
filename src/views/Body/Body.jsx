@@ -10,31 +10,52 @@ import PostsList from '../admin/PostsList';
 import { useAuth } from '../../contexts/AuthContext/AuthContext';
 
 export const Body = () => {
-    const { isLoggedIn, isAdmin } = useAuth();
+	const { isLoggedIn, isAdmin } = useAuth();
 
-    console.log('Body rendered. isLoggedIn:', isLoggedIn, 'isAdmin:', isAdmin);
+	return (
+		<main className='body'>
+			<Routes>
+				<Route
+					path='/'
+					element={
+						isLoggedIn ? <Navigate to='/home' /> : <Navigate to='/login' />
+					}
+				/>
+				<Route
+					path='/login'
+					element={!isLoggedIn ? <Login /> : <Navigate to='/home' />}
+				/>
+				<Route
+					path='/register'
+					element={!isLoggedIn ? <Register /> : <Navigate to='/home' />}
+				/>
+				<Route
+					path='/home'
+					element={isLoggedIn ? <Home /> : <Navigate to='/login' />}
+				/>
+				<Route
+					path='/profile'
+					element={isLoggedIn ? <Profile /> : <Navigate to='/login' />}
+				/>
 
-    return (
-        <main className='body'>
-            <Routes>
-                {console.log('Rendering routes')}
-                <Route path='/' element={isLoggedIn ? <Navigate to='/home' /> : <Navigate to='/login' />} />
-                <Route path='/login' element={!isLoggedIn ? <Login /> : <Navigate to='/home' />} />
-                <Route path='/register' element={!isLoggedIn ? <Register /> : <Navigate to='/home' />} />
-                <Route path='/home' element={isLoggedIn ? <Home /> : <Navigate to='/login' />} />
-                <Route path='/profile' element={isLoggedIn ? <Profile /> : <Navigate to='/login' />} />
-                
-                {isAdmin && (
-                    <>
-                        {console.log('Rendering admin routes')}
-                        <Route path='/adminusers' element={<UsersList />} />
-                        <Route path='/adminposts' element={<PostsList />} />
-                    </>
-                )}
-                
-                {console.log('Rendering NotFound route')}
-                <Route path='*' element={<NotFound />} />
-            </Routes>
-        </main>
-    );
+				{isAdmin && (
+					<>
+						<Route
+							path='/adminusers'
+							element={<UsersList />}
+						/>
+						<Route
+							path='/adminposts'
+							element={<PostsList />}
+						/>
+					</>
+				)}
+
+				<Route
+					path='*'
+					element={<NotFound />}
+				/>
+			</Routes>
+		</main>
+	);
 };

@@ -6,12 +6,6 @@ import './PostCard.css'
 const PostCard = ({ post }) => {
   const { token } = useAuth();
 
-  useEffect(() => {
-    console.log('PostCard recibió:', post);
-    console.log('post.user:', post?.user);
-    console.log('post.likes:', post?.likes);
-  }, [post]);
-
   if (!post) {
     console.error('Post is null or undefined:', post);
     return null;
