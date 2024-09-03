@@ -27,8 +27,8 @@ Error Handling: The system includes comprehensive error handling to manage issue
 | **Home Page**   | ![Home Page](https://i.postimg.cc/fR30Dmhy/Captura-de-pantalla-2024-09-02-a-la-s-22-31-04.png)   |
 | **Profile**   | ![Profile](https://i.postimg.cc/9FQ7gs8G/Captura-de-pantalla-2024-09-02-a-la-s-22-30-15.png)     |
 | **Editing Profile info**  | ![Editing Profile Info](https://i.postimg.cc/65bGkzgF/Captura-de-pantalla-2024-09-02-a-la-s-22-30-41.png)  |
-| **Edit users**| ![Edit Users](https://postimg.cc/DSPwp24J)|
-| **Edit Posts**     | ![Edit Posts](https://postimg.cc/gXnc08S8)         |
+| **Edit users**| ![Edit Users](https://i.postimg.cc/mg01Dkbw/Captura-de-pantalla-2024-09-02-a-la-s-22-31-40.png)|
+| **Edit Posts**     | ![Edit Posts](https://i.postimg.cc/LXVJNVjC/Captura-de-pantalla-2024-09-02-a-la-s-22-32-11.png)         |
 
 ### Local Installation
 Clone this repository: $git clone https://github.com/More-Pe/frontend-SocialMedia
