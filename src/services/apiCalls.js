@@ -242,25 +242,28 @@ export const updatePost = async (postId, data, token) => {
 	}
   };
 
-export const getOwnPosts = async (token) => {
+  export const getOwnPosts = async (token) => {
 	try {
-		const response = await fetch(`${URL}/posts/own`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-		});
-
-		if (!response.ok) {
-			throw new Error(`Error: ${response.status} ${response.statusText}`);
-		}
-
-		return await response.json();
+	  const response = await fetch(`${URL}/posts/own`, {
+		method: 'GET',
+		headers: {
+		  'Content-Type': 'application/json',
+		  Authorization: `Bearer ${token}`,
+		},
+	  });
+  
+	  if (!response.ok) {
+		const errorData = await response.json();
+		throw new Error(errorData.message || `Error: ${response.status} ${response.statusText}`);
+	  }
+  
+	  const data = await response.json();
+	  return { success: true, data: data.data };
 	} catch (error) {
-		return { success: false, message: error.message };
+	  console.error('Error in getOwnPosts:', error);
+	  return { success: false, message: error.message };
 	}
-};
+  };
 
 export const getAllPosts = async (token) => {
 	try {

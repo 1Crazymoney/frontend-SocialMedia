@@ -10,6 +10,11 @@ const PostItem = ({ post, onEdit, onDelete }) => {
       console.log('PostItem recibió:', post);
     }, [post]);
 
+    if (!post) {
+      console.error('PostItem received null or undefined post');
+      return null;
+    }
+
     const {
       user,
       description = '',
@@ -22,7 +27,7 @@ const PostItem = ({ post, onEdit, onDelete }) => {
       first_name = 'Unknown',
       last_name = 'User',
       user_name = 'user',
-    } = user;
+    } = user || {};
 
     return (
       <div className='post-card'>
