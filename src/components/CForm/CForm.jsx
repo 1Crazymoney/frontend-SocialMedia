@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CInput } from '../CInput/CInput';
 import './CForm.css';
 
-export const CForm = ({ fields, onSubmit, submitButtonText }) => {
+export const CForm = ({ title, fields, onSubmit, submitButtonText }) => {
 	const [formData, setFormData] = useState({});
 
 	const handleChange = (e) => {
@@ -18,6 +18,7 @@ export const CForm = ({ fields, onSubmit, submitButtonText }) => {
 
 	return (
 		<div className='c-form-container'>
+			{title && <h2>{title}</h2>}
 			{fields.map((field, index) => (
 				<div key={index} className='c-form-field'>
 					<CInput

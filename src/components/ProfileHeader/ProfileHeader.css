@@ -1,21 +1,25 @@
-/* Estilos para el contenedor principal del perfil */
+/* Estilos generales para pantallas verticales (móviles) */
 .profile-header {
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 8px; /* Bordes redondeados para el perfil */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  width: 90%;
+  box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ocupar el 100% del ancho en pantallas pequeñas */
+  margin-bottom: 1em;
+  padding: 1em;
+  box-sizing: border-box;
 }
 
 /* Estilo para la foto de portada */
 .cover-photo {
   width: 100%;
-  height: 17em;
+  height: 12em; /* Reducir la altura de la portada en pantallas pequeñas */
   background-size: cover;
   background-position: center;
-  border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
-  margin-bottom: 2em;
+  border-radius: 0.5em 0.5em 0 0;
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
 }
 
 /* Contenedor de la información del perfil */
@@ -23,91 +27,151 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%; /* Asegura que la info ocupe todo el ancho disponible */
+  box-sizing: border-box;
 }
 
 /* Estilo para la imagen del perfil */
 .profile-picture {
-  width: 10em;
-  height: 10em;
+  width: 8em;
+  height: 8em;
   border-radius: 50%;
-  border: 0.7em solid #ffffff; /* Borde blanco alrededor de la imagen */
-  margin-bottom: 2em;
-  margin-top: -6em;
+  border: 0.5em solid #ffffff;
+  margin-top: -4em;
+  box-sizing: border-box;
 }
 
 /* Contenedor de los detalles del usuario */
 .user-details {
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Estilo para los nombres y detalles del usuario */
 .user-details h1 {
   margin: 0;
   font-size: 1.5em;
-  color: #333; /* Color del texto principal */
+  color: #333;
 }
 
 .username {
-  color: #555; /* Color del nombre de usuario */
+  color: #555;
   font-style: italic;
-  margin: 5px 0;
+  margin: 0.5em 0;
 }
 
 .about {
-  color: #777; /* Color del texto del "Acerca de ti" */
-  margin: 10px 0;
+  color: #777;
+  margin: 0.5em 0;
   font-size: 1em;
 }
 
 /* Contenedor de estadísticas de seguidores y seguidos */
-.stats {
-  margin: 10px 0;
-}
 
 .stats span {
-  display: block;
+  display: inline;
   font-size: 0.9em;
-  color: #444; /* Color del texto de las estadísticas */
-  margin: 5px 0;
+  color: #444;
+  margin-bottom: 1em;
+  padding: 1em;
 }
 
 /* Estilo para los botones */
 .button {
-  background-color: #894ae2; /* Color de fondo del botón */
+  background-color: #894ae2;
   color: #ffffff;
   border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
+  border-radius: 0.25em;
+  padding: 0.8em 1.6em;
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 5px;
+  box-sizing: border-box;
 }
 
 .button:hover {
-  background-color: #7037b4; /* Color de fondo del botón al pasar el cursor */
+  background-color: #7037b4;
 }
 
 .cancel-edit-btn {
-  background-color: #e74c3c; /* Color de fondo del botón de cancelar */
+  background-color: #e74c3c;
 }
 
 /* Estilo para los mensajes de error y carga */
 .error-message,
 .loading-message {
   text-align: center;
-  color: #e74c3c; /* Color del texto del mensaje de error */
-  margin: 20px;
+  color: #e74c3c;
+  margin: 1.5em;
   font-size: 1.2em;
 }
 
 /* Estilos para los inputs en modo edición */
 .edit-input {
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  padding: 0.8em;
+  margin: 0.8em 0;
+  border-radius: 0.25em;
+  border: 0.1em solid #ddd;
   box-sizing: border-box;
 }
-  
+@media (min-width: 768px) {
+  /* Estilos para el contenedor principal del perfil */
+  .profile-header {
+    flex-direction: column; /* Mantiene la disposición en columna */
+    align-items: center;
+    width: 80%; /* Aumentar el ancho del contenedor */
+    margin: 2em auto; /* Centramos el contenedor con márgenes automáticos */
+    padding: 2em;
+    box-sizing: border-box;
+    border-radius: 1em;
+  }
+
+  /* Estilo para la foto de portada */
+  .cover-photo {
+    width: 100%; /* Mantiene el ancho completo */
+    height: 20em; /* Mayor altura en pantallas más grandes */
+    margin-bottom: 2em;
+    border-radius: 0.5em 0.5em 0 0;
+    box-sizing: border-box;
+  }
+
+  /* Contenedor de la información del perfil */
+  .profile-info {
+    width: 100%; /* Asegura que la información ocupe todo el ancho */
+    box-sizing: border-box;
+  }
+
+  /* Estilo para la imagen del perfil */
+  .profile-picture {
+    width: 10em;
+    height: 10em;
+    margin-top: -5em; /* Mayor margen superior en pantallas más grandes */
+  }
+
+  /* Contenedor de los detalles del usuario */
+  .user-details {
+    text-align: center; /* Mantiene el texto centrado */
+  }
+
+  /* Estilo para los nombres y detalles del usuario */
+  .user-details h1 {
+    font-size: 2em; /* Tamaño de fuente más grande en pantallas más grandes */
+  }
+
+  .username {
+    font-size: 1.2em; /* Aumentar el tamaño de la fuente */
+    margin: 0.5em 0;
+  }
+
+  .about {
+    font-size: 1.1em; /* Aumentar el tamaño de la fuente */
+  }
+
+  /* Estilo para los botones */
+  .button {
+    padding: 1em 2em; /* Mayor padding en pantallas más grandes */
+    font-size: 1.1em; /* Aumentar el tamaño de la fuente */
+  }
+}

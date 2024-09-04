@@ -1,57 +1,54 @@
 /* Estilos generales para pantallas pequeñas (verticales) */
 .app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100vw;
-  background-color: var(--button);
-}
-
-.body {
-  background-color: #f0f0f0;
-  color: black;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100vw;
+	background-color: var(--button);
+	text-align: center;
 }
 
 .sidebar {
-  background-color: var(--button);
-  height: 10%;
-  display: flex;
-  flex-direction: column;
+	background-color: var(--button);
+	height: 10%;
+	display: flex;
+	flex-direction: column;
 }
 
 /* Estilos para pantallas grandes (horizontales) */
 @media (min-width: 768px) {
-  .app-container {
-    flex-direction: row;
-  }
+	.app-container {
+		flex-direction: row;
+	}
 
-  .navbar {
-    width: 15%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: var(--button);
-  }
+	.navbar {
+		width: 15%;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		background-color: var(--button);
+	}
 
-  .body {
-    width: 80%;
-    min-height: 100vh;
-  }
+	.body {
+		background-color: #f0f0f0;
+		color: black;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 80%;
+		min-height: 100vh;
+	}
 
-  .sidebar {
-    width: 15%;
-    min-height: 100vh;
-    align-self: flex-end;
-    justify-self: flex-end;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--button);
-  }
+	.sidebar {
+		width: 15%;
+		min-height: 100vh;
+		align-self: flex-end;
+		justify-self: flex-end;
+		display: flex;
+		flex-direction: column;
+		background-color: var(--button);
+	}
 }

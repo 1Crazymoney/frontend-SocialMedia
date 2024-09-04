@@ -41,7 +41,7 @@ Backend Connection: Ensure that the backend is running properly on your local ma
 In the .env file in the frontend, specify the backend URL.
 ### 4. Start the development server
 ```npm run dev```
-### 5. 5. User Credentials
+### 5. User Credentials
 To perform tests, you can use the following pre-registered users that are defined in the backend seeders:
 
 **Superadmin**

@@ -25,7 +25,7 @@ const Home = () => {
 					const response = await getAllPosts(token);
 					if (response.success === false) {
 						setError('Error fetching posts: ' + response.message);
-						console.error('Error fetching posts:', response.message);
+						console.log('Error fetching posts:', response.message);
 					} else {
 						const validPosts = (response.data || []).filter(
 							(post) => post && post._id,

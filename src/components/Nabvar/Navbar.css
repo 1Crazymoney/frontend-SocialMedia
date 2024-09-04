@@ -1,71 +1,61 @@
 /* Estilos generales para pantallas pequeñas (verticales) */
-.app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 100vw;
-    align-items: center;
-  }
-  
-  .navbar {
-    background-color: var(--button);
-    height: 15%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px; /* Asegura un poco de espacio en los bordes */
-  }
-  
-  .nav-item {
-    width: 100%;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    text-align: center;
-    color: #ffffff;
-    background-color: var(--button);
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .nav-item:hover {
-    background-color: var(--light-violet);
-  }
-  
-  .img-nav-item {
-    max-width: 100%; /* Hace que la imagen no exceda el ancho del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Elimina el espacio en blanco debajo de la imagen */
-    padding-bottom: 2em;
-  }
-  
-  /* Estilos para pantallas grandes (horizontales) */
-  @media (min-width: 768px) {
-    .app-container {
-      flex-direction: row;
-    }
-  
-    .navbar {
-      width: 15%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 10px 0; /* Asegura un poco de espacio en los bordes */
-    }
-  
-    .body {
-      width: 80%;
-      min-height: 100vh;
-    }
-  
-    .sidebar {
-      width: 15%;
-      min-height: 100vh;
-      align-self: flex-end;
-      justify-self: flex-end;
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  
-  
+.navbar {
+	background-color: var(--button);
+	height: 15%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 10px; /* Asegura un poco de espacio en los bordes */
+}
+
+.nav-item {
+	width: 100%;
+	padding: 1em;
+  box-sizing: border-box;
+	text-align: center;
+	color: #ffffff;
+	background-color: var(--button);
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+}
+
+.nav-item:hover {
+	background-color: var(--light-violet);
+}
+
+.img-nav-item {
+	display: none;
+}
+
+/* Estilos para pantallas grandes (horizontales) */
+@media (min-width: 768px) {
+	.navbar {
+		width: 15%;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+    align-content: flex-start;
+		padding: 1em 0; /* Asegura un poco de espacio en los bordes */
+    box-sizing: border-box;
+	}
+
+	.body {
+		width: 80%;
+		min-height: 100vh;
+	}
+
+	.sidebar {
+		width: 15%;
+		min-height: 100vh;
+		align-self: flex-end;
+		justify-self: flex-end;
+		display: flex;
+		flex-direction: column;
+	}
+	.img-nav-item {
+		max-width: 100%; /* Hace que la imagen no exceda el ancho del contenedor */
+		height: auto; /* Mantiene la proporción de la imagen */
+		display: block; /* Elimina el espacio en blanco debajo de la imagen */
+		padding-bottom: 2em;
+	}
+}

@@ -46,8 +46,8 @@ export const Login = () => {
 
 	return (
 		<div>
-			<h1>Login</h1>
 			<CForm
+				title="Login"
 				fields={loginFields}
 				onSubmit={handleLogin}
 				submitButtonText='Login'

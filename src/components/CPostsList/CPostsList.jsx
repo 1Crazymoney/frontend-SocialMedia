@@ -23,7 +23,7 @@ export const CPostsList = () => {
 					console.error('Failed to fetch posts:', response.message);
 				}
 			} catch (error) {
-				console.error('Error fetching posts:', error);
+				console.log('Error fetching posts:', error);
 			}
 		};
 		if (token) {

@@ -38,8 +38,8 @@ export const Register = () => {
 
     return (
         <div>
-            <h1>Register</h1>
             <CForm
+                title="Register"
                 fields={registerFields}
                 onSubmit={handleRegister}
                 submitButtonText="Register"

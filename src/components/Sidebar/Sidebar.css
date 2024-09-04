@@ -1,0 +1,14 @@
+.img-side-item {
+    max-width: 100%; /* Hace que la imagen no exceda el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block; /* Elimina el espacio en blanco debajo de la imagen */
+    padding-top: 4em;
+}
+
+/* Estilos para pantallas grandes (horizontales) */
+@media (min-width: 768px) {
+
+    .img-side-item {
+        display: none;
+    }
+}

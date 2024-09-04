@@ -6,10 +6,9 @@
     background-color: #ffffff; /* Fondo blanco para el formulario */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    padding: 20px;
-    max-width: 600px; /* Máximo ancho del formulario */
     width: 100%;
-    margin: 20px auto; /* Centra el formulario horizontalmente */
+    box-sizing: border-box;
+    padding: 2em;
   }
   
   /* Estilo para cada campo del formulario */
@@ -31,7 +30,6 @@
   /* Estilo para el botón de envío usando la clase `.button` */
   .c-form-submit-button {
     width: 100%;
-    padding: 10px;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
