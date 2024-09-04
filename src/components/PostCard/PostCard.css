@@ -1,9 +1,14 @@
 .post-card {
-  border: 0.0625em solid #ddd;
-  border-radius: 0.5em;
-  margin: 1em;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ocupar el 100% del ancho en pantallas pequeñas */
+  margin-bottom: 1em;
   padding: 1em;
-  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 1em;
 }
 
 .post-header {
@@ -79,4 +84,83 @@
   font-size: 0.9em;
   color: #666;
   margin-left: 0.5em;
+}
+
+@media (min-width: 768px) {
+
+  
+  .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75em;
+  }
+  
+  .profile-picture-post {
+    width: 3em; /* Ajusta el tamaño de la imagen de perfil */
+    height: 3em;
+    border-radius: 50%; /* Para que la imagen sea circular */
+    margin-right: 1em; /* Espacio entre la imagen y el nombre del usuario */
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+  }
+  
+  .user-info {
+    flex-grow: 1; /* Hace que el contenedor ocupe todo el espacio disponible */
+  }
+  
+  .user-name {
+    font-weight: bold;
+    margin-bottom: 0.25em;
+  }
+  
+  .user-username {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  .post-date {
+    color: #666;
+    font-size: 0.9em;
+    margin-left: auto; /* Empuja la fecha hacia el extremo derecho */
+  }
+  
+  .post-body {
+    margin-bottom: 0.75em;
+  }
+  
+  .post-description {
+    margin-bottom: 0.75em;
+  }
+  
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.75em;
+    border-radius: 0.5em; /* Redondeo de esquinas para la imagen del post */
+  }
+  
+  .post-footer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .like-button {
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    border: none;
+    border-radius: 0.25em;
+    cursor: pointer;
+    background-color: var(--button);
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .like-button.liked {
+    background-color: var(--light-violet);
+  }
+  
+  .likes-counter {
+    font-size: 0.9em;
+    color: #666;
+    margin-left: 0.5em;
+  }
 }

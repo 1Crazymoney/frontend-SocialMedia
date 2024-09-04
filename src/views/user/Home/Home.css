@@ -16,12 +16,3 @@
   box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
 }
 
-.post-card {
-  width: 100%;
-  max-width: 500px; /* Ancho máximo para pantallas más grandes */
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  box-sizing: border-box; /* Incluye padding y border en el ancho */
-}
-
