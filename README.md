@@ -27,7 +27,7 @@ The social network offers the following features:
 ## 🎬 In Action
 Below is a preview of the application on a Nexus 5 device:
 
-![Vista en Nexus 5](https://i.postimg.cc/FKqXqhdk/Grabacio-n-de-pantalla-2024-09-04-a-la-s-3-47-57.gif)
+![Vista en Nexus 5](https://i.postimg.cc/6ppsp8CG/Grabacio-n-de-pantalla-2024-09-04-a-la-s-3-47-57-1.gif)
 
 ## Descripción
 
