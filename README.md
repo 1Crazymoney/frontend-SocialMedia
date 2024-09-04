@@ -15,20 +15,21 @@ The social network offers the following features:
 
 **Post Management:** Users can create, update, and delete posts. Each post includes a description and an optional image. Users can view their own posts, all posts, or posts by other users. Additionally, users can like or unlike posts to express their preferences.
 
+**Responsive Design:** The application features a responsive design that adapts seamlessly to various screen sizes and resolutions, ensuring an optimal user experience across different devices.
+
 **Error Handling:** The system includes comprehensive error handling to manage issues like invalid user credentials, missing required fields, and failed database operations.
+
 
 ## ⚙️ Stack
 <img alt="react logo" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
 
-## 📸 Screenshots
 
-| Page        | Screenshot                                       |
-|-------------|--------------------------------------------------|
-| **Home Page**   | ![Home Page](https://i.postimg.cc/fR30Dmhy/Captura-de-pantalla-2024-09-02-a-la-s-22-31-04.png)   |
-| **Profile**   | ![Profile](https://i.postimg.cc/9FQ7gs8G/Captura-de-pantalla-2024-09-02-a-la-s-22-30-15.png)     |
-| **Editing Profile info**  | ![Editing Profile Info](https://i.postimg.cc/65bGkzgF/Captura-de-pantalla-2024-09-02-a-la-s-22-30-41.png)  |
-| **Edit users**| ![Edit Users](https://i.postimg.cc/mg01Dkbw/Captura-de-pantalla-2024-09-02-a-la-s-22-31-40.png)|
-| **Edit Posts**     | ![Edit Posts](https://i.postimg.cc/LXVJNVjC/Captura-de-pantalla-2024-09-02-a-la-s-22-32-11.png)         |
+## 🎬 In Action
+Below is a preview of the application on a Nexus 5 device:
+
+![Vista en Nexus 5](https://i.postimg.cc/FKqXqhdk/Grabacio-n-de-pantalla-2024-09-04-a-la-s-3-47-57.gif)
+
+## Descripción
 
 ## 🧑‍💻 Local Installation
 
@@ -63,6 +64,10 @@ Once the development server is running, open your browser and navigate to http:/
 Read the instructions by going to:
 
 [Backend Social Media](https://github.com/More-Pe/backend-SocialMedia)
+
+## 📞 Contact
+
+<a href=https://www.linkedin.com/in/morena-peralta-almada target="blank">![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a> <a href=https://www.github.com/More-Pe target="blank">![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)</a>
 
 
 
